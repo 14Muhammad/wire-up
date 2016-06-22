@@ -1,15 +1,15 @@
 import { Component }   from '@angular/core';
 import { Router }      from '@angular/router';
 import { AuthService } from '../auth.service';
+import {MdButton} from "@angular2-material/button/button";
+import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
+import {MdInput} from "@angular2-material/input/input";
+import {MdToolbar} from "@angular2-material/toolbar/toolbar";
 
 @Component({
-    template: `
-    <h2>LOGIN</h2>
-    <p>{{message}}</p>
-    <p>
-      <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-      <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-    </p>`
+    templateUrl: 'app/login/login.component.html',
+    styleUrls: ['app/login/login.component.css'],
+    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar]
 })
 export class LoginComponent {
     message: string;
@@ -41,10 +41,3 @@ export class LoginComponent {
         this.setMessage();
     }
 }
-
-
-/*
- Copyright 2016 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */
