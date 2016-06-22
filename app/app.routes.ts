@@ -1,17 +1,19 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { CrisisListComponent }  from './crisis-list.component';
-import { HeroListComponent }    from './hero-list.component';
-import {LoginComponent} from "./login/login-component";
 import { HeroesRoutes }        from './heroes/heroes.routes';
 import {ClientRoutes} from "./client/client.routes";
+import {CrisisCenterRoutes} from "./crisis-center/crisis-center.routes";
+import {LoginRoutes, AUTH_PROVIDERS} from "./login/login.routes";
+import {CanDeactivateGuard} from "./interfaces";
 
 export const routes: RouterConfig = [
     { path: '', redirectTo: 'login'},
-    { path: 'crisis-center', component: CrisisListComponent },
-    { path: 'login', component: LoginComponent },
+    ...LoginRoutes,
     ...HeroesRoutes,
-    ...ClientRoutes
+    ...ClientRoutes,
+    ...CrisisCenterRoutes
 ];
 export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
+    provideRouter(routes),
+    AUTH_PROVIDERS,
+    CanDeactivateGuard
 ];
