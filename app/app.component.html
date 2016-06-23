@@ -1,10 +1,11 @@
-<div *ngIf="authService.isLoggedIn">
-    <nav>
-        <a [routerLink]="['/crisis-center/admin']">Crisis Admin</a>
-        <a [routerLink]="['/crisis-center']">Crisis Center</a>
-        <a [routerLink]="['/heroes']">Heroes</a>
-        <a [routerLink]="['/clients']">Clients</a>
-        <a [routerLink]="['/login']">Login</a>
-    </nav>
-</div>
-<router-outlet></router-outlet>
+    <header-component *ngIf="authService.isLoggedIn" class="page-header navbar navbar-fixed-top"></header-component>
+    <div class="clearfix"> </div>
+    <div class="page-container">
+        <sidebar-component *ngIf="authService.isLoggedIn" class="page-sidebar-wrapper"></sidebar-component>
+        <div class="page-content-wrapper">
+            <div class="page-content">
+                <page-head-component *ngIf="authService.isLoggedIn" class="page-head"></page-head-component>
+                <router-outlet class="fade-in-up"></router-outlet>
+            </div>
+        </div>
+    </div>

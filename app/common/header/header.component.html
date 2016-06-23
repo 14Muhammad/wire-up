@@ -1,0 +1,27 @@
+<div class="page-header-inner">
+    <!-- BEGIN LOGO -->
+    <div class="page-logo">
+        <h2> Wire Up </h2>
+    </div>
+
+    <div class="page-top">
+        <div class="top-menu">
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown dropdown-user dropdown-dark">
+
+                        <!--<span class="username username-hide-on-mobile"> Nick </span>-->
+                    <button (click)="login()"  *ngIf="!authService.isLoggedIn"> Welcome </button>
+                    <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+
+                </li>
+                <!-- END USER LOGIN DROPDOWN -->
+                <!-- BEGIN QUICK SIDEBAR DROPDOWN -->
+
+                <!-- END QUICK SIDEBAR DROPDOWN -->
+            </ul>
+        </div>
+        <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END PAGE TOP -->
+</div>
+<!-- END HEADER INNER -->
