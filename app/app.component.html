@@ -1,11 +1,6 @@
-    <header-component *ngIf="authService.isLoggedIn" class="page-header navbar navbar-fixed-top"></header-component>
-    <div class="clearfix"> </div>
-    <div class="page-container">
-        <sidebar-component *ngIf="authService.isLoggedIn" class="page-sidebar-wrapper"></sidebar-component>
-        <div class="page-content-wrapper">
-            <div class="page-content">
-                <page-head-component *ngIf="authService.isLoggedIn" class="page-head"></page-head-component>
-                <router-outlet class="fade-in-up"></router-outlet>
-            </div>
-        </div>
-    </div>
+<header-component *ngIf="authService.isLoggedIn"></header-component>
+<sidebar-component *ngIf="authService.isLoggedIn"></sidebar-component>
+<section class="main-container" [ngClass]="{sidebarPushRight: isActive}">
+    <router-outlet></router-outlet>
+</section>
+

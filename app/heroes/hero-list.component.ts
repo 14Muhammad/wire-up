@@ -1,8 +1,9 @@
 // TODO SOMEDAY: Feature Componetized like CrisisCenter
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
 import { Hero, HeroService }   from './hero.service';
+import {AuthService} from "../auth.service";
 
 @Component({
   template: `
@@ -15,6 +16,7 @@ import { Hero, HeroService }   from './hero.service';
       </li>
     </ul>
   `,
+  directives: [ROUTER_DIRECTIVES],
   providers:[HeroService]
 })
 export class HeroListComponent implements OnInit, OnDestroy {
@@ -22,10 +24,11 @@ export class HeroListComponent implements OnInit, OnDestroy {
 
   private selectedId: number;
   private sub: any;
+  constructor(private service: HeroService, public authService: AuthService, public router: Router){
+    if (!this.authService.isLoggedIn)
+      this.router.navigate(['/login']);
+  }
 
-  constructor(
-    private service: HeroService,
-    private router: Router) {}
 
   ngOnInit() {
     this.sub = this.router

@@ -5,13 +5,19 @@
         '@angular':                   'node_modules/@angular',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
         '@angular2-material':         'node_modules/@angular2-material',
-        'rxjs':                       'node_modules/rxjs'
+        'ng2-bootstrap':              'node_modules/ng2-bootstrap',
+        'rxjs':                       'node_modules/rxjs',
+        'moment':                     'node_modules/moment/moment.js',
+        'angular2-highcharts':        'node_modules/angular2-highcharts/dist',
+        'highcharts/highstock.src':   'node_modules/highcharts/highstock.src.js'
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         'app':                        { main: 'main.js',  defaultExtension: 'js' },
         'rxjs':                       { defaultExtension: 'js' },
+        'ng2-bootstrap':              { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+        'angular2-highcharts' :       { main: 'index',format: 'cjs', defaultExtension: 'js' }
     };
     var ngPackageNames = [
         'common',

@@ -1,15 +1,5 @@
-<!--
-<p>{{message}}</p>
-<p>
-    <button (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-    <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-</p>
-
--->
-
 <div class="container">
-    <!--<div class="row">-->
-        <div class="col-sm-6 col-sm-offset-3">
+        <div class="col-sm-6 col-sm-offset-1">
             <md-card>
                 <md-toolbar color="primary">Sign In</md-toolbar><br>
                 <md-card-content>
@@ -18,10 +8,9 @@
                 </md-card-content>
                 <md-card-actions>
                     <button  md-raised-button color="primary" (click)="login()">Sign In</button>
-                    <button  md-button>Forgot Password?</button>
+                    <button  md-button (click)="goToResetPassword()">Forgot Password?</button>
                 </md-card-actions>
             </md-card>
-            You don't have an account?<button  md-button>Sign up</button>
+            You don't have an account?<button (click)="goToSignup()" md-button>Sign up</button>
         </div>
-    <!--</div>-->
 </div>

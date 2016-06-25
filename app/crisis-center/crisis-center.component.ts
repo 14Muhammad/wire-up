@@ -1,7 +1,8 @@
 import { Component }            from '@angular/core';
-import { ROUTER_DIRECTIVES }    from '@angular/router';
+import { ROUTER_DIRECTIVES, Router }    from '@angular/router';
 
 import { CrisisService }        from './crisis.service';
+import {AuthService} from "../auth.service";
 
 @Component({
   template:  `
@@ -11,11 +12,11 @@ import { CrisisService }        from './crisis.service';
   directives: [ROUTER_DIRECTIVES],
   providers:  [CrisisService]
 })
-export class CrisisCenterComponent { }
+export class CrisisCenterComponent {
 
+  constructor(public authService: AuthService, public router: Router){
+    if (!this.authService.isLoggedIn)
+      this.router.navigate(['/login']);
+  }
 
-/*
- Copyright 2016 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */
+}

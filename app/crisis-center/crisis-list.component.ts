@@ -23,7 +23,9 @@ export class CrisisListComponent implements OnInit, OnDestroy {
   constructor(
       private service: CrisisService,
       private route: ActivatedRoute,
-      private router: Router) { }
+      private router: Router) { 
+    
+  }
 
   isSelected(crisis: Crisis) { return crisis.id === this.selectedId; }
 

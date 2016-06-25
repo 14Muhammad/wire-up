@@ -31,7 +31,7 @@ export class LoginComponent {
                 console.log("==> " + this.authService.isLoggedIn);
                 // Todo: capture where the user was going and nav there.
                 // Meanwhile redirect the user to the crisis admin
-                this.router.navigate(['/crisis-center/admin']);
+                this.router.navigate(['/dashboard']);
             }
         });
     }
@@ -39,5 +39,12 @@ export class LoginComponent {
     logout() {
         this.authService.logout();
         this.setMessage();
+    }
+
+    goToResetPassword(){
+        this.router.navigate(['/reset-password']);
+    }
+    goToSignup(){
+        this.router.navigate(['/signup']);
     }
 }
