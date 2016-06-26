@@ -9,7 +9,7 @@ import {ResetPasswordRoutes} from "./reset-password/reset-password.routes";
 import {DashboardRoutes} from "./dashboard/dashboard.routes";
 
 export const routes: RouterConfig = [
-    { path: '', redirectTo: 'login'},
+    { path: '', redirectTo: 'dashboard'},
     ...LoginRoutes,
     ...SignupRoutes,
     ...ResetPasswordRoutes,

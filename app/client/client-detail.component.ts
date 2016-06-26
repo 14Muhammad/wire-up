@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }       from '@angular/router';
 import { Client, ClientService } from './client.service';
+import {AuthService} from "../auth.service";
 @Component({
     template: `
   <h2>Clients</h2>
@@ -23,9 +24,13 @@ export class ClientDetailComponent implements OnInit, OnDestroy  {
     client: Client;
     private sub: any;
     constructor(
+        public authService: AuthService,
         private route: ActivatedRoute,
         private router: Router,
-        private service: ClientService) {}
+        private service: ClientService) {
+        if (!this.authService.isLoggedIn)
+            this.router.navigate(['/login']);
+    }
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             let id = +params['id']; // (+) converts string 'id' to a number
