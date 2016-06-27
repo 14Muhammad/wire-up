@@ -1,16 +1,44 @@
 <div class="container">
-        <div class="col-sm-6 col-sm-offset-1">
+    <div class="col-lg-6 col-lg-offset-1">
+        <form>
             <md-card>
                 <md-toolbar color="primary">Sign In</md-toolbar><br>
                 <md-card-content>
-                    <md-input placeholder="Email" type="email"></md-input><br>
-                    <md-input placeholder="Password" type="password"></md-input><br><br>
+                    <md-input placeholder="Email" type="email" required
+                              name="email" id="email">
+                    </md-input><br>
+                    <md-input placeholder="Password" type="password" required
+                               name="password">
+
+                    </md-input><br><br>
                 </md-card-content>
                 <md-card-actions>
-                    <button  md-raised-button color="primary" (click)="login()">Sign In</button>
+                    <button  md-raised-button color="primary" (click)="login()"
+                             [disabled]="false" type="submit">Sign In</button>
                     <button  md-button (click)="goToResetPassword()">Forgot Password?</button>
                 </md-card-actions>
             </md-card>
-            You don't have an account?<button (click)="goToSignup()" md-button>Sign up</button>
-        </div>
+        </form>
+        You don't have an account?<button (click)="goToSignup()" md-button>Sign up</button>
+
+<!--        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control input-underline input-lg" required
+                       [(ngModel)]="model.email"
+                       name="email"  #email="ngModel" >
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    Email is required
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control input-underline input-lg" required
+                       [(ngModel)]="model.password"
+                       name="password" >
+            </div>
+            <button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Login</button>
+        </form>-->
+    </div>
 </div>

@@ -5,11 +5,15 @@ import {MdButton} from "@angular2-material/button/button";
 import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
 import {MdInput} from "@angular2-material/input/input";
 import {MdToolbar} from "@angular2-material/toolbar/toolbar";
+import {FORM_DIRECTIVES, FORM_PROVIDERS} from "@angular/forms";
+import { NgForm }    from '@angular/common';
+import {Login} from "./login";
 
 @Component({
     templateUrl: 'app/login/login.component.html',
     styleUrls: ['app/login/login.component.css'],
-    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar]
+    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar, FORM_DIRECTIVES ],
+    providers:[FORM_PROVIDERS]
 })
 export class LoginComponent {
     message: string;
@@ -47,4 +51,10 @@ export class LoginComponent {
     goToSignup(){
         this.router.navigate(['/signup']);
     }
+
+    model = new Login('ali@yahoo.com','');
+    onSubmit() { 
+        
+    }
+
 }

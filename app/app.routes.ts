@@ -7,12 +7,14 @@ import {CanDeactivateGuard} from "./interfaces";
 import {SignupRoutes} from "./signup/signup.routes";
 import {ResetPasswordRoutes} from "./reset-password/reset-password.routes";
 import {DashboardRoutes} from "./dashboard/dashboard.routes";
+import {UserRoutes} from "./user/user.routes";
 
 export const routes: RouterConfig = [
     { path: '', redirectTo: 'dashboard'},
     ...LoginRoutes,
     ...SignupRoutes,
     ...ResetPasswordRoutes,
+    ...UserRoutes,
     ...DashboardRoutes,
     ...HeroesRoutes,
     ...ClientRoutes,
