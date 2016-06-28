@@ -49,7 +49,7 @@
     "angular2-in-memory-web-api": "0.0.12",
     "bootstrap": "4.0.0-alpha.2",
     "font-awesome" : "^4.6.3",
-    "jquery": "^3.0.0",
+    "jquery": "^2.2.3",
     "highcharts": "4.2.5",
     "ng2-bootstrap": "1.0.17",
     "moment": "2.13.0",

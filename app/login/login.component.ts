@@ -12,7 +12,7 @@ import {Login} from "./login";
 @Component({
     templateUrl: 'app/login/login.component.html',
     styleUrls: ['app/login/login.component.css'],
-    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar, FORM_DIRECTIVES ],
+    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar, FORM_DIRECTIVES],
     providers:[FORM_PROVIDERS]
 })
 export class LoginComponent {
@@ -32,10 +32,10 @@ export class LoginComponent {
         this.authService.login().subscribe(() => {
             this.setMessage();
             if (this.authService.isLoggedIn) {
-                console.log("==> " + this.authService.isLoggedIn);
+                console.log("[isLoggedIn] ===>  " + this.authService.isLoggedIn);
                 // Todo: capture where the user was going and nav there.
                 // Meanwhile redirect the user to the crisis admin
-                this.router.navigate(['/dashboard']);
+                this.router.navigate(['/projects']);
             }
         });
     }

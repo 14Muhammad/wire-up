@@ -1,24 +1,16 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import { HeroesRoutes }        from './heroes/heroes.routes';
-import {ClientRoutes} from "./client/client.routes";
-import {CrisisCenterRoutes} from "./crisis-center/crisis-center.routes";
 import {LoginRoutes, AUTH_PROVIDERS} from "./login/login.routes";
 import {CanDeactivateGuard} from "./interfaces";
 import {SignupRoutes} from "./signup/signup.routes";
 import {ResetPasswordRoutes} from "./reset-password/reset-password.routes";
-import {DashboardRoutes} from "./dashboard/dashboard.routes";
-import {UserRoutes} from "./user/user.routes";
+import {HomeRoutes} from "./home/home.routes";
 
 export const routes: RouterConfig = [
-    { path: '', redirectTo: 'dashboard'},
+    { path: '', redirectTo: 'login'},
     ...LoginRoutes,
     ...SignupRoutes,
     ...ResetPasswordRoutes,
-    ...UserRoutes,
-    ...DashboardRoutes,
-    ...HeroesRoutes,
-    ...ClientRoutes,
-    ...CrisisCenterRoutes
+    ...HomeRoutes
 ];
 export const APP_ROUTER_PROVIDERS = [
     provideRouter(routes),

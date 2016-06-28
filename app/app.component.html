@@ -1,6 +1,3 @@
-<header-component *ngIf="authService.isLoggedIn"></header-component>
-<sidebar-component *ngIf="authService.isLoggedIn"></sidebar-component>
-<section class="main-container" [ngClass]="{sidebarPushRight: isActive}">
-    <router-outlet></router-outlet>
-</section>
+<router-outlet></router-outlet>
+
 

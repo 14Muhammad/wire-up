@@ -1,0 +1,15 @@
+<h2>PROJECTS</h2>
+<!--<ul class="items">
+    <li *ngFor="let project of projects"
+        (click)="onSelect(project)">
+        <span class="badge">{{project.id}}</span> {{project.name}}
+    </li>
+</ul>-->
+<dx-button text="Refresh Data" height="40px"
+           hint="Refresh Data" icon="refresh" type="success" (onClick)="refresh()">
+</dx-button>
+<dx-data-grid [dataSource]="projects"
+              allowColumnResizing="true"
+              allowColumnReordering="true">
+</dx-data-grid>
+ 
