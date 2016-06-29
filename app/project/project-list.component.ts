@@ -2,11 +2,12 @@ import {Component, OnInit, ViewChild}   from '@angular/core';
 import { Router }              from '@angular/router';
 import {AuthService} from "../auth.service";
 import {ProjectService, Project} from "./project.service";
-import {DxDataGrid, DxButton} from "devextreme-angular2";
+import {DxDataGrid, DxButton, DxToolbar} from "devextreme-angular2";
 @Component({
     templateUrl:'app/project/project-list.component.html',
+    styleUrls:['app/project/project-list.component.css'],
     providers: [ProjectService],
-    directives: [DxDataGrid,DxButton]
+    directives: [DxDataGrid,DxButton,DxToolbar]
 })
 export class ProjectListComponent implements OnInit {
     projects: Project[];
@@ -28,5 +29,5 @@ export class ProjectListComponent implements OnInit {
         this.router.navigate(['/project', project.id]);
     }
 
-
 }
+
