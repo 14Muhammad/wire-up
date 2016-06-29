@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }       from '@angular/router';
-import {AuthService} from "../auth.service";
 import {ProjectService, Project} from "./project.service";
 @Component({
     template: `
@@ -24,12 +23,10 @@ export class ProjectDetailComponent implements OnInit, OnDestroy  {
     project: Project;
     private sub: any;
     constructor(
-        public authService: AuthService,
         private route: ActivatedRoute,
         private router: Router,
         private service: ProjectService) {
-        if (!this.authService.isLoggedIn)
-            this.router.navigate(['/login']);
+
     }
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {

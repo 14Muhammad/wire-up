@@ -1,6 +1,5 @@
 import { Component }   from '@angular/core';
 import { Router }   from '@angular/router';
-import { AuthService } from '../auth.service';
 import {MdButton} from "@angular2-material/button/button";
 import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
 import {MdInput} from "@angular2-material/input/input";
@@ -16,9 +15,7 @@ import {CHART_DIRECTIVES} from 'angular2-highcharts';
     providers:[]
 })
 export class DashboardComponent {
-    constructor(public authService: AuthService, public router: Router) {
-        if (!this.authService.isLoggedIn)
-            this.router.navigate(['/login']);
+    constructor(public router: Router) {
         this.options = {
             title: {text: 'Progress Chart'},
             series: [{

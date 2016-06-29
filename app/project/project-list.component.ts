@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild}   from '@angular/core';
 import { Router }              from '@angular/router';
-import {AuthService} from "../auth.service";
 import {ProjectService, Project} from "./project.service";
 import {DxDataGrid, DxButton, DxToolbar} from "devextreme-angular2";
 @Component({
@@ -12,11 +11,9 @@ import {DxDataGrid, DxButton, DxToolbar} from "devextreme-angular2";
 export class ProjectListComponent implements OnInit {
     projects: Project[];
     constructor(
-        public authService: AuthService,
         private router: Router,
         private service: ProjectService) {
-        if (!this.authService.isLoggedIn)
-            this.router.navigate(['/login']);
+
     }
     @ViewChild(DxDataGrid) dataGrid:DxDataGrid
     refresh() {

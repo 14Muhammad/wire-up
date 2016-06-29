@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }       from '@angular/router';
-import {AuthService} from "../auth.service";
 import {MessageService, Message} from "./message.service";
 @Component({
     template: `
@@ -28,12 +27,9 @@ export class MessageDetailComponent implements OnInit, OnDestroy  {
     message: Message;
     private sub: any;
     constructor(
-        public authService: AuthService,
         private route: ActivatedRoute,
         private router: Router,
         private service: MessageService) {
-        if (!this.authService.isLoggedIn)
-            this.router.navigate(['/login']);
     }
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
