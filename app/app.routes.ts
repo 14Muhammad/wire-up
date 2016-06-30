@@ -6,7 +6,7 @@ import {ResetPasswordRoutes} from "./reset-password/reset-password.routes";
 import {HomeRoutes} from "./home/home.routes";
 
 export const routes: RouterConfig = [
-    { path: '', redirectTo: 'login'},
+    { path: '', pathMatch: 'full', redirectTo: 'login'},
     ...LoginRoutes,
     ...SignupRoutes,
     ...ResetPasswordRoutes,

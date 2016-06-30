@@ -21,7 +21,8 @@ export class LoginComponent {
     constructor(public authService: AuthService, public router: Router) {
         this.setMessage();
     }
-
+    email: string;
+    password: string;
     setMessage() {
         this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
     }

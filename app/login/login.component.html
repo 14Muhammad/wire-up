@@ -4,10 +4,10 @@
             <md-card>
                 <md-toolbar color="primary">Sign In</md-toolbar><br>
                 <md-card-content>
-                    <md-input placeholder="Email" type="email" required
+                    <md-input placeholder="Email" [(ngModel)]="email" type="email" required
                               name="email" id="email">
                     </md-input><br>
-                    <md-input placeholder="Password" type="password" required
+                    <md-input placeholder="Password" [(ngModel)]="password" type="password" required
                                name="password">
 
                     </md-input><br><br>

@@ -5,15 +5,14 @@ import {MdButton} from "@angular2-material/button/button";
 import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
 import {MdInput} from "@angular2-material/input/input";
 import {MdToolbar} from "@angular2-material/toolbar/toolbar";
-import {MdRadioButton, MD_RADIO_DIRECTIVES, MdRadioGroup} from "@angular2-material/radio/radio";
-import {MdRadioDispatcher} from "@angular2-material/radio/radio_dispatcher";
+import {MdRadioButton, MD_RADIO_DIRECTIVES, MdRadioGroup, MdUniqueSelectionDispatcher} from "@angular2-material/radio/radio";
 
 @Component({
     templateUrl: 'app/signup/signup.component.html',
     styleUrls: ['app/signup/signup.component.css'],
     directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar
         ,MD_RADIO_DIRECTIVES, MdRadioGroup],
-    providers:[MdRadioDispatcher, MdRadioButton]
+    providers:[MdRadioButton,MdUniqueSelectionDispatcher]
 })
 export class SignupComponent {
     message: string;
