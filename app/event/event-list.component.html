@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-xl-12">
+        <h1 class="page-header">
+            Events
+        </h1>
+    </div>
+</div>
+<div class="row" style="margin: 10px 0px;">
+    <dx-toolbar [dataSource]="[
+        { location: 'before', locateInMenu: 'never', widget: 'dxButton',
+            options: { icon: 'refresh', text:'Refresh', type:'success' }
+        },{ location: 'before', locateInMenu: 'never', widget: 'dxButton',
+            options: { icon: 'preferences', text: 'Settings' }
+        }]">
+    </dx-toolbar>
+</div>
+<div class="row" style="margin: 10px 0px;">
+    <dx-scheduler
+     [dataSource]="[{text: 'Website Re-Design Plan',
+    ownerId: [4],
+    startDate: '2015, 4, 25, 9, 30',
+    endDate: '2015, 4, 25, 11, 30'
+    }, {
+    text: 'Book Flights to San Fran for Sales Trip',
+    ownerId: [2],
+    startDate: '2015, 4, 25, 12, 0',
+    endDate: '2015, 4, 25, 13, 0'
+    }]"
+     
+     [views]="['agenda', 'month', 'week', 'workWeek', 'day']"
+    [height]="600">
+    </dx-scheduler>
+</div>
+ 

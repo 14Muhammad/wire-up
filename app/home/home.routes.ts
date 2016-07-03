@@ -8,6 +8,7 @@ import {HeroesRoutes} from "../heroes/heroes.routes";
 import {ClientRoutes} from "../client/client.routes";
 import {CrisisCenterRoutes} from "../crisis-center/crisis-center.routes";
 import {AuthGuard} from "../auth.guard";
+import {EventRoutes} from "../event/event.routes";
 
 export const HomeRoutes: RouterConfig = [
     {
@@ -24,6 +25,7 @@ export const HomeRoutes: RouterConfig = [
             ...MessageRoutes,
             ...UserRoutes,
             ...DashboardRoutes,
+            ...EventRoutes,
             ...HeroesRoutes,
             ...ClientRoutes,
             ...CrisisCenterRoutes

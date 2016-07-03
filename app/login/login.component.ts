@@ -29,16 +29,16 @@ export class LoginComponent {
 
     login() {
         this.message = 'Trying to log in ...';
-
-        this.authService.login().subscribe(() => {
-            this.setMessage();
-            if (this.authService.isLoggedIn) {
-                console.log("[isLoggedIn] ===>  " + this.authService.isLoggedIn);
-                // Todo: capture where the user was going and nav there.
-                // Meanwhile redirect the user to the crisis admin
-                this.router.navigate(['/projects']);
-            }
-        });
+        if(this.email == 'admin@demo.com' && this.password=='admin')
+            this.authService.login().subscribe(() => {
+                this.setMessage();
+                if (this.authService.isLoggedIn) {
+                    console.log("[isLoggedIn] ===>  " + this.authService.isLoggedIn);
+                    // Todo: capture where the user was going and nav there.
+                    // Meanwhile redirect the user to the crisis admin
+                    this.router.navigate(['/projects']);
+                }
+            });
     }
 
     logout() {
