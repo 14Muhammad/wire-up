@@ -25,19 +25,20 @@
 </div>
 <div class="row" style="margin: 10px 0px;">
     <dx-data-grid [dataSource]="projects"
-                  [allowColumnResizing]="true"
-                  [hoverStateEnabled]="false"
-                  [allowColumnReordering]="true"
-                  [searchPanel]="{visible: true}"
-                  [paging]="{pageSize: 5}"
-                  [pager]="{showInfo:true,showNavigationButtons:true,showPageSizeSelector:true}"
-                  [rowAlternationEnabled]="true"
-                  [selection]="{mode: 'none'}"
-                  [editing]="{mode: 'form',allowUpdating: true,allowDeleting: true,allowAdding: true, texts:{addRow: 'Add a project'}}"
-                  [export]="{enabled: true,fileName:'Projects',allowExportSelectedData: true}"
-                  [groupPanel]="{visible: true}"
-                  [filterRow]="{visible: true,applyFilter: 'auto'}"
-                  [selection]="{mode: 'single'}">
+                  [allowColumnResizing]="dxDataGird.allowColumnResizing"
+                  [hoverStateEnabled]="dxDataGird.hoverStateEnabled"
+                  [allowColumnReordering]="dxDataGird.allowColumnReordering"
+                  [rowAlternationEnabled]="dxDataGird.rowAlternationEnabled"
+                  [searchPanel]="dxDataGird.searchPanel"
+                  [paging]="dxDataGird.paging"
+                  [pager]="dxDataGird.pager"
+                  [selection]="dxDataGird.selection"
+                  [editing]="dxDataGird.editing"
+                  [export]="dxDataGird.export"
+                  [groupPanel]="dxDataGird.groupPanel"
+                  [filterRow]="dxDataGird.filterRow"
+                  (onRowPrepared)="dxDataGird.onRowPrepared($event)"
+                  (onCellPrepared)="dxDataGird.onCellPrepared($event)">
     </dx-data-grid>
 </div>
  

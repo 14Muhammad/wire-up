@@ -15,6 +15,61 @@ export class ProjectListComponent implements OnInit {
         private service: ProjectService) {
 
     }
+
+    dxDataGird = {
+        allowColumnResizing : true,
+        hoverStateEnabled : false,
+        allowColumnReordering : true,
+        rowAlternationEnabled : true,
+        selection : {
+            mode: 'single'
+        },
+        groupPanel : {
+            visible: true
+        },
+        filterRow : {
+            visible: true,
+            applyFilter: 'auto'
+        },
+        searchPanel:{
+            visible: true
+        },
+        editing: {
+            mode: 'cell',
+            allowUpdating: true,
+            allowDeleting: true,
+            allowAdding: true,
+            texts:{
+                addRow: 'Add a project'
+            }
+        },
+        paging: {
+            pageSize: 5
+        },
+        pager : {
+            showInfo: true,
+            showNavigationButtons: true,
+            showPageSizeSelector: true
+        },
+        export : {
+            enabled: true,
+            fileName:'Projects',
+            allowExportSelectedData: true
+        },
+        onCellPrepared (e) {
+            console.log("onCellPrepared");
+            console.log(e);
+        },
+        onRowPrepared(e){
+            console.log("onRowPrepared");
+            console.log(e);
+        }
+    }
+
+
+
+
+
     @ViewChild(DxDataGrid) dataGrid:DxDataGrid
     refresh() {
         this.dataGrid.instance.refresh();
