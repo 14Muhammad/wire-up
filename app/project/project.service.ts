@@ -11,7 +11,7 @@ export class Project {
                 public client: string) { }
 }
 let PROJECTS = [
-    new Project(099, 'DataGrid','3000$', '2 May', '3 June', '34%', 'open', 'Data Grid project from USA', 'Needo'),
+    new Project(099, 'DataGrid','', '2 May', '3 June', '34%', 'open', 'Data Grid project from USA', 'Needo'),
     new Project(199, 'Kafka','3000$', '2 May', '3 June', '34%', 'open', 'Data Grid project from USA', 'Needo'),
     new Project(299, 'Denis','3000$', '2 May', '3 June', '34%', 'open', 'Data Grid project from USA', 'Needo'),
     new Project(399, 'DataMax','3000$', '2 May', '3 June', '34%', 'open', 'Data Grid project from USA', 'Needo'),

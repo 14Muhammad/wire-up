@@ -37,8 +37,12 @@
                   [export]="dxDataGird.export"
                   [groupPanel]="dxDataGird.groupPanel"
                   [filterRow]="dxDataGird.filterRow"
+                  (onEditingStart)="dxDataGird.onEditingStart($event)"
                   (onRowPrepared)="dxDataGird.onRowPrepared($event)"
-                  (onCellPrepared)="dxDataGird.onCellPrepared($event)">
+                  (onCellPrepared)="dxDataGird.onCellPrepared($event)"
+                  (onContextMenuPreparing)="dxDataGird.onContextMenuPreparing($event)"
+                  (onDataErrorOccurred)="dxDataGird.onDataErrorOccurred($event)"
+                  (onContentReady)="dxDataGird.onContentReady($event)">
     </dx-data-grid>
 </div>
  

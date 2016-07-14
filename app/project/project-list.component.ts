@@ -56,12 +56,40 @@ export class ProjectListComponent implements OnInit {
             fileName:'Projects',
             allowExportSelectedData: true
         },
+        onEditingStart (e) {
+            console.log("onEditingStart");
+            console.log(e);
+        },
         onCellPrepared (e) {
             console.log("onCellPrepared");
             console.log(e);
+            if(e.value === ''){
+                e.cellElement.addClass('emptyCell');
+            }
         },
         onRowPrepared(e){
             console.log("onRowPrepared");
+            console.log(e);
+        },
+        onContextMenuPreparing(e){
+            console.log("onRowPrepared");
+            console.log(e);
+            if (e.row.rowType === 'data') {
+                e.items = [{
+                    text: "Edit",
+                }, {
+                    text: "Insert",
+                }, {
+                    text: "Delete",
+                }];
+            }
+        },
+        onDataErrorOccurred(e){
+            console.log("onDataErrorOccurred");
+            console.log(e);
+        },
+        onContentReady(e){
+            console.log("onContentReady");
             console.log(e);
         }
     }
