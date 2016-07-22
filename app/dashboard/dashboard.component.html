@@ -102,17 +102,30 @@
             </div>
         </div>
     </div>
-<!--    <div class="row">
-        <div class="col-xl-6">
-            <chart [options]="options" (load)="saveChart($event.context)">
-                <series (hide)="onSeriesHide($event.context)">
-                    <point (select)="onPointSelect($event.context)"></point>
-                </series>
-            </chart>
-            <button  md-raised-button color="primary" (click)="addPoint()">Click to add random points</button>
+    <div class="row" style="margin: 10px 0px;">
+        <dx-toolbar [dataSource]="toolbar.dataSource">
+        </dx-toolbar>
+    </div>
+    <div class="row">
+        <div class="col-xl-12">
+            <dx-chart [dataSource]="trend.dataSource"
+                      [size]="trend.size"
+                      [commonSeriesSettings]="trend.commonSeriesSettings"
+                      [commonPaneSettings]="trend.commonPaneSettings"
+                      [crosshair]="trend.crosshair"
+                      [series]="trend.series"
+                      [argumentAxis]="trend.argumentAxis"
+                      [valueAxis]="trend.valueAxis"
+                      [legend]="trend.legend"
+                      [title]="trend.title"
+                      [export]="trend.export"
+                      [animation]="trend.animation"
+                      [tooltip]="trend.tooltip"
+                      (onPointClick)="trend.onPointClick($event)"
+                      (onLegendClick)="trend.onLegendClick($event)"
+                      (onSeriesClick)="trend.onSeriesClick($event)"
+                      (onIncidentOccurred)="trend.onIncidentOccurred($event)">
+            </dx-chart>
         </div>
-        <div class="col-xl-6">
-
-        </div>
-    </div>-->
+    </div>
 </div>
