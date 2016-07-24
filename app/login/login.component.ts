@@ -36,7 +36,7 @@ export class LoginComponent {
                     console.log("[isLoggedIn] ===>  " + this.authService.isLoggedIn);
                     // Todo: capture where the user was going and nav there.
                     // Meanwhile redirect the user to the crisis admin
-                    this.router.navigate(['/projects']);
+                    this.router.navigate(['/dashboard']);
                 }
             });
     }

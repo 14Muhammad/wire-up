@@ -6,13 +6,13 @@ import {MdInput} from "@angular2-material/input/input";
 import {MdToolbar} from "@angular2-material/toolbar/toolbar";
 import {MD_RADIO_DIRECTIVES, MdRadioGroup} from "@angular2-material/radio/radio";
 import {CHART_DIRECTIVES} from 'angular2-highcharts';
-import {DxChart, DxToolbar, DxButton} from "devextreme-angular2/index";
+import {DxChart, DxToolbar, DxButton, DxPieChart} from "devextreme-angular2/index";
 
 @Component({
     templateUrl: 'app/dashboard/dashboard.component.html',
     styleUrls: [],
     directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar
-        ,MD_RADIO_DIRECTIVES, MdRadioGroup,CHART_DIRECTIVES,DxChart,DxToolbar,DxButton],
+        ,MD_RADIO_DIRECTIVES, MdRadioGroup,CHART_DIRECTIVES,DxChart,DxToolbar,DxButton,DxPieChart],
     providers:[]
 })
 export class DashboardComponent implements OnInit {
@@ -200,12 +200,12 @@ export class DashboardComponent implements OnInit {
             verticalAlignment: "bottom",
             horizontalAlignment: "center"
         },
-        title: "Live Wire-Up Streaming",
+        title: "Live Trends",
         export: {
             enabled: true
         },
         animation: {
-            duration: 3000,
+            duration: 2000,
             easing: 'linear',
             enabled: true,
             //maxPointCountSupported:100
@@ -246,6 +246,69 @@ export class DashboardComponent implements OnInit {
             var incidentInfo = info.target;
             //DevExpress.ui.notify(incidentInfo.id + ': ' + incidentInfo.text);
         }
+    }
+    pieChart = {
+        dataSource: [{
+            type: "Salaries",
+            val: 150000
+        }, {
+            type: "Bills",
+            val: 50000
+        }, {
+            type: "Miscellaneous",
+            val: 20000
+        }, {
+            type: "Investment",
+            val: 20000
+        }, {
+            type: "Rent Expenditure",
+            val: 50000
+        }, {
+            type: "Allowances",
+            val: 60000
+        }],
+        title: "Expenses",
+        tooltip: {
+            enabled: true,
+            format: {
+                type: "millions",
+                percentPrecision: 2
+            }/*,
+            customizeTooltip: function (arg) {
+                return {
+                    text: arg.valueText + " - " + arg.percentText
+                };
+            }*/
+        },
+        legend: {
+            verticalAlignment: "bottom",
+            horizontalAlignment: "center",
+            margin: 0
+        },
+        "export": {
+            enabled: true
+        },
+        animation: {
+            duration: 2000,
+            easing: 'linear',
+            enabled: true,
+            //maxPointCountSupported:100
+        },
+        size:{
+            height: 500/*,
+            width: 800*/
+        },
+        series: [{
+            type: "doughnut",
+            argumentField: "type",
+            label: {
+                visible: true,
+                format: "decimal",
+                connector: {
+                    visible: true
+                }
+            }
+        }]
     }
 
 }

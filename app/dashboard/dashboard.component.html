@@ -1,35 +1,22 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-xl-12">
-            <h1 class="page-header">
-                Dashboard
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i>
-                    <a> Overview</a>
-                </li>
-            </ol>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-xl-3 col-lg-6">
             <div class="card card-primary card-inverse">
                 <div class="card-header card-primary">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
+                            <i class="fa fa-clock-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-xs-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
+                            <div>You are currently clocked out</div>
                         </div>
                     </div>
                 </div>
                 <div class="card-footer card-default">
                     <a href="javascript:;">
-                        <span class="pull-xs-left">View Details</span>
-                        <span class="pull-xs-right"><i class="fa fa-arrow-circle-right"></i></span>
+                        <span class="pull-xs-right">
+                            <button md-raised-button> <i class="fa fa-sign-in fa-fw"></i> Clock In</button>
+                        </span>
                         <div class="clearfix"></div>
                     </a>
                 </div>
@@ -44,7 +31,7 @@
                         </div>
                         <div class="col-xs-9 text-xs-right">
                             <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div>My open tasks</div>
                         </div>
                     </div>
                 </div>
@@ -62,11 +49,11 @@
                 <div class="card-header card-warning">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
+                            <i class="fa fa-calendar-check-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-xs-right">
                             <div class="huge">124</div>
-                            <div>New Orders!</div>
+                            <div>Events today</div>
                         </div>
                     </div>
                 </div>
@@ -107,7 +94,7 @@
         </dx-toolbar>
     </div>
     <div class="row">
-        <div class="col-xl-12">
+        <div class="col-xl-8">
             <dx-chart [dataSource]="trend.dataSource"
                       [size]="trend.size"
                       [commonSeriesSettings]="trend.commonSeriesSettings"
@@ -126,6 +113,17 @@
                       (onSeriesClick)="trend.onSeriesClick($event)"
                       (onIncidentOccurred)="trend.onIncidentOccurred($event)">
             </dx-chart>
+        </div>
+        <div class="col-xl-4">
+            <dx-pie-chart [dataSource]="pieChart.dataSource"
+                          [size]="pieChart.size"
+                          [series]="pieChart.series"
+                          [legend]="pieChart.legend"
+                          [title]="pieChart.title"
+                          [export]="pieChart.export"
+                          [animation]="pieChart.animation"
+                          [tooltip]="pieChart.tooltip">
+            </dx-pie-chart>
         </div>
     </div>
 </div>
