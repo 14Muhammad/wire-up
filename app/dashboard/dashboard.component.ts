@@ -216,7 +216,8 @@ export class DashboardComponent implements OnInit {
             format: {
                 type: "percent",
                 precision: 1
-            }
+            },
+            zIndex: 99
             /*,
              customizeTooltip: function (point) {
              $log.info("customizeTooltip");
@@ -227,6 +228,7 @@ export class DashboardComponent implements OnInit {
              };
              }*/
         },
+        pathModified: true,
         onPointClick(e) {
 
 
@@ -273,7 +275,9 @@ export class DashboardComponent implements OnInit {
             format: {
                 type: "millions",
                 percentPrecision: 2
-            }/*,
+            },
+            zIndex: 99
+            /*,
             customizeTooltip: function (arg) {
                 return {
                     text: arg.valueText + " - " + arg.percentText
@@ -308,7 +312,8 @@ export class DashboardComponent implements OnInit {
                     visible: true
                 }
             }
-        }]
+        }],
+        pathModified: true,
     }
 
 }

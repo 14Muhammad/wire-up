@@ -107,6 +107,7 @@
                       [title]="trend.title"
                       [export]="trend.export"
                       [animation]="trend.animation"
+                      [pathModified]="trend.pathModified"
                       [tooltip]="trend.tooltip"
                       (onPointClick)="trend.onPointClick($event)"
                       (onLegendClick)="trend.onLegendClick($event)"
@@ -122,7 +123,8 @@
                           [title]="pieChart.title"
                           [export]="pieChart.export"
                           [animation]="pieChart.animation"
-                          [tooltip]="pieChart.tooltip">
+                          [tooltip]="pieChart.tooltip"
+                          [pathModified]="pieChart.pathModified">
             </dx-pie-chart>
         </div>
     </div>
