@@ -3,48 +3,8 @@
 </button>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a [routerLink]="['/dashboard']" class="list-group-item">
-            <i class="fa fa-fw fa-desktop"></i> Dashboard
+        <a *ngFor="let item of sidebarItems" [routerLink]="['/' + item.route]" class="{{item.class}}">
+            <i class="fa fa-fw fa-{{item.icon}}"></i> {{item.name | ellipses:12 | uppercase}}
         </a>
-        <a [routerLink]="['/dashboard']" class="list-group-item">
-            <i class="fa fa-fw fa-comments"></i> Timeline
-        </a>
-        <a [routerLink]="['/events']" class="list-group-item">
-            <i class="fa fa-fw fa-calendar"></i> Events
-        </a>
-        <a [routerLink]="['/dashboard']" class="list-group-item">
-            <i class="fa fa-fw fa-book"></i> Notes
-        </a>
-        <a [routerLink]="['/messages']" class="list-group-item">
-            <i class="fa fa-fw fa-envelope"></i> Messages
-        </a>
-        <a [routerLink]="['/clients']" class="list-group-item">
-            <i class="fa fa-fw fa-briefcase"></i> Clients
-        </a>
-        <a [routerLink]="['/projects']" class="list-group-item">
-            <i class="fa fa-fw fa-th-large"></i> Projects
-        </a>
-        <a [routerLink]="['/users']" class="list-group-item">
-            <i class="fa fa-fw fa-users"></i> Team Members
-        </a>
-        <a [routerLink]="['/heroes']" class="list-group-item">
-            <i class="fa fa-fw fa-user"></i> Heroes
-        </a>
-        <!--<a [routerLink]="['/crisis-center']" class="list-group-item">
-            <i class="fa fa-fw fa-th-large"></i> Crisis
-        </a>
-        <a [routerLink]="['/crisis-center/admin']" class="list-group-item">
-            <i class="fa fa-fw fa-th-large"></i> Crisis Admin
-        </a>
-        <a [routerLink]="['/heroes']" class="list-group-item">
-            <i class="fa fa-fw fa-user"></i> Heroes
-        </a>
-
-        <a [routerLink]="['/messages']" class="list-group-item">
-            <i class="fa fa-fw fa-user"></i> Messages
-        </a>
-        <a [routerLink]="['/projects']" class="list-group-item">
-            <i class="fa fa-fw fa-user"></i> Projects
-        </a>-->
     </ul>
 </nav>

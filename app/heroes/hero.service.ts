@@ -24,26 +24,20 @@ export class HeroService {
 
   }
 
-  //getHeroes() { return heroesPromise; }
-  getHeroes() {
+  getHeroes() { return heroesPromise; }
+/*  getHeroes() {
     return this.http.get(this.heroesUrl)
-      .toPromise()
-      .then(response => response.json().data as Hero[])
-      .catch(this.handleError);
+        .toPromise()
+        .then(response => response.json().data as Hero[])
+        .catch(this.handleError);
+  }
 
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
-  }
+  }*/
   getHero(id: number | string) {
     return heroesPromise
       .then(heroes => heroes.filter(h => h.id === +id)[0]);
   }
 }
-
-
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
