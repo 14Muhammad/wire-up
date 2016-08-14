@@ -1,34 +1,20 @@
 var express = require('express'), cors = require('cors');
 var app = express();
 var path = require('path');
+var bodyParser = require("body-parser");
 app.use(cors());
-
-var MongoClient = require('mongodb').MongoClient
-    , assert = require('assert');
-
-// Connection URL
-var url = 'mongodb://localhost:27017/test10';
-// Use connect method to connect to the Server
-MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    console.log(":: Connected correctly to server");
-
-    db.close();
-});
-//app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
-// This responds with "Hello World" on the homepage
-app.get('/', function (req, res) {
-    for(var i=0; i<5; i++){
-        debugger;
-        console.log(i);
-    }
-    console.log("done");
-    console.log("Got a GET request for the homepage");
-    res.send('Hello GET');
-})
+var projects = require('./routes/projects');
+app.use('/wireup/', projects);
 
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
 
 // This responds a POST request for the homepage
 app.post('/', function (req, res) {
@@ -55,10 +41,18 @@ app.get('/ab*cd', function(req, res) {
 })
 
 var server = app.listen(8081, function () {
-    debugger;
     var host = server.address().address
     var port = server.address().port
-
-    console.log("Example app listening at http://%s:%s", host, port)
-
+    console.log("WireUp app listening at http://%s:%s", host, port)
 })
+
+
+function randomString(len, an){
+    an = an&&an.toLowerCase();
+    var str="", i=0, min=an=="a"?10:0, max=an=="n"?10:62;
+    for(;i++<len;){
+        var r = Math.random()*(max-min)+min <<0;
+        str += String.fromCharCode(r+=r>9?r<36?55:61:48);
+    }
+    return str;
+}

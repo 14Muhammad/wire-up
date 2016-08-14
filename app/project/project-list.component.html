@@ -5,15 +5,6 @@
         </h1>
     </div>
 </div>
-<!--<ul class="items">
-    <li *ngFor="let project of projects"
-        (click)="onSelect(project)">
-        <span class="badge">{{project.id}}</span> {{project.name}}
-    </li>
-</ul>-->
-<!--<dx-button text="Refresh Data" height="40px"
-           hint="Refresh Data" icon="refresh" type="success" (onClick)="refresh()">
-</dx-button>-->
 <div class="row" style="margin: 10px 0px;">
     <dx-toolbar [dataSource]="[
         { location: 'before', locateInMenu: 'never', widget: 'dxButton',
@@ -25,6 +16,9 @@
 </div>
 <div class="row" style="margin: 10px 0px;">
     <dx-data-grid [dataSource]="projects"
+                  [columns]="dxDataGird.columns"
+                  [columnHidingEnabled]="dxDataGird.columnHidingEnabled"
+                  [columnFixing]="dxDataGird.columnFixing"
                   [allowColumnResizing]="dxDataGird.allowColumnResizing"
                   [hoverStateEnabled]="dxDataGird.hoverStateEnabled"
                   [allowColumnReordering]="dxDataGird.allowColumnReordering"
@@ -39,6 +33,12 @@
                   [filterRow]="dxDataGird.filterRow"
                   (onEditingStart)="dxDataGird.onEditingStart($event)"
                   (onRowPrepared)="dxDataGird.onRowPrepared($event)"
+                  (onRowInserting)="dxDataGird.onRowInserting($event)"
+                  (onRowInserted)="dxDataGird.onRowInserted($event)"
+                  (onRowUpdating)="dxDataGird.onRowUpdating($event)"
+                  (onRowUpdated)="dxDataGird.onRowUpdated($event)"
+                  (onRowRemoving)="dxDataGird.onRowRemoving($event)"
+                  (onRowRemoved)="dxDataGird.onRowRemoved($event)"
                   (onCellPrepared)="dxDataGird.onCellPrepared($event)"
                   (onContextMenuPreparing)="dxDataGird.onContextMenuPreparing($event)"
                   (onDataErrorOccurred)="dxDataGird.onDataErrorOccurred($event)"

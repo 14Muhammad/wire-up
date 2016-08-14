@@ -10,13 +10,69 @@ import {DxDataGrid, DxButton, DxToolbar} from "devextreme-angular2";
 })
 export class ProjectListComponent implements OnInit {
     projects: Project[];
-    constructor(
-        private router: Router,
-        private service: ProjectService) {
+    constructor(private router: Router,private service: ProjectService) {
 
     }
 
     dxDataGird = {
+        columns:[
+            {
+                dataField: "id",
+                caption: "ID",
+                visible: false
+            },
+            {
+                dataField: "name",
+                caption: "Title"
+            },
+            {
+                dataField: "client",
+                caption: "Client"
+            },
+            {
+                dataField: "price",
+                caption: "Price",
+                format: {
+                    type: 'currency',
+                    currency: 'USD',
+                    precision:2
+                },
+                alignment: 'left'
+            },
+            {
+                dataField: "startTime",
+                caption: "Start Time",
+                dataType: "date",
+                format: { type: 'shortDateShortTime' }
+            },
+            {
+                dataField: "endTime",
+                caption: "Deadline",
+                dataType: "date",
+                format: { type: 'shortDateShortTime' }
+            },
+            {
+                dataField: "progress",
+                caption: "Progress",
+                dataType: "number",
+            },
+            {
+                dataField: "status",
+                caption: "Status"
+            },
+            {
+                dataField: "labels",
+                caption: "Labels"
+            },
+            {
+                dataField: "description",
+                caption: "Description"
+            }
+        ],
+        columnFixing: {
+            enabled: true
+        },
+        columnHidingEnabled: false,
         allowColumnResizing : true,
         hoverStateEnabled : false,
         allowColumnReordering : true,
@@ -35,16 +91,16 @@ export class ProjectListComponent implements OnInit {
             visible: true
         },
         editing: {
-            mode: 'cell',
+            mode: 'form',
             allowUpdating: true,
             allowDeleting: true,
             allowAdding: true,
             texts:{
-                addRow: 'Add a project'
+                addRow: 'Add a projectModel'
             }
         },
         paging: {
-            pageSize: 5
+            pageSize: 12
         },
         pager : {
             showInfo: true,
@@ -69,6 +125,39 @@ export class ProjectListComponent implements OnInit {
         },
         onRowPrepared(e){
             console.log("onRowPrepared");
+            console.log(e);
+        },
+        onRowInserting : (e)=>{
+            console.log("onRowInserting");
+            console.log(e);
+            var flag : boolean;
+            this.service.addProject(e.data)
+                .subscribe(flag => flag = flag);
+        },
+        onRowInserted(e){
+            console.log("onRowInserted");
+            console.log(e);
+        },
+        onRowUpdating : (e)=>{
+            console.log("onRowUpdating");
+            console.log(e);
+            var flag : boolean;
+            this.service.updateProject(e.oldData._id, e.newData)
+                .subscribe(flag => flag = flag);
+        },
+        onRowUpdated : (e)=>{
+            console.log("onRowUpdated");
+            console.log(e);
+        },
+        onRowRemoving : (e)=>{
+            console.log("onRowRemoving");
+            console.log(e);
+            var flag: boolean;
+            this.service.deleteProject(e.data._id)
+                .subscribe(flag => flag = flag);
+        },
+        onRowRemoved : (e)=>{
+            console.log("onRowRemoved");
             console.log(e);
         },
         onContextMenuPreparing(e){
@@ -103,7 +192,8 @@ export class ProjectListComponent implements OnInit {
         this.dataGrid.instance.refresh();
     }
     ngOnInit() {
-        this.service.getProjects().then(projects => this.projects = projects);
+        this.service.getProjects()
+            .subscribe(projects => this.projects = projects);
     }
     onSelect(project: Project) {
         this.router.navigate(['/project', project.id]);

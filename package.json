@@ -7,7 +7,7 @@
     "url" : "https://github.com/14Muhammad/wire-up.git"
   },
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"node server/app.js\"",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
@@ -55,6 +55,9 @@
     "jquery": "^2.2.3",
     "moment": "2.13.0",
     "mongodb": "^2.2.5",
+    "mongoose": "^4.5.8",
+    "mongoose-double": "0.0.1",
+    "mpromise": "^0.5.5",
     "multer": "^1.1.0",
     "ng2-bootstrap": "1.0.17",
     "reflect-metadata": "^0.1.3",
