@@ -4,9 +4,7 @@ import {ProjectRoutes} from "../project/project.routes";
 import {MessageRoutes} from "../message/message.routes";
 import {UserRoutes} from "../user/user.routes";
 import {DashboardRoutes} from "../dashboard/dashboard.routes";
-import {HeroesRoutes} from "../heroes/heroes.routes";
 import {ClientRoutes} from "../client/client.routes";
-import {CrisisCenterRoutes} from "../crisis-center/crisis-center.routes";
 import {AuthGuard} from "../auth.guard";
 import {EventRoutes} from "../event/event.routes";
 
@@ -26,9 +24,7 @@ export const HomeRoutes: Routes = [
             ...UserRoutes,
             ...DashboardRoutes,
             ...EventRoutes,
-            ...HeroesRoutes,
-            ...ClientRoutes,
-            ...CrisisCenterRoutes
+            ...ClientRoutes
         ]
     }
 

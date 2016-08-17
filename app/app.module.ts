@@ -10,6 +10,18 @@ import {AuthService} from "./auth.service";
 import {SignupComponent} from "./signup/signup.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {AuthGuard} from "./auth.guard";
+import {HomeComponent} from "./home/home.component";
+import {ProjectListComponent} from "./project/project-list.component";
+import {ProjectDetailComponent} from "./project/project-detail.component";
+import {MessageListComponent} from "./message/message-list.component";
+import {UserListComponent} from "./user/user-list.component";
+import {MessageDetailComponent} from "./message/message-detail.component";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {UserDetailComponent} from "./user/user-detail.component";
+import {EventListComponent} from "./event/event-list.component";
+import {EventDetailComponent} from "./event/event-detail.component";
+import {ClientListComponent} from "./client/client-list.component";
+import {ClientDetailComponent} from "./client/client-detail.component";
 @NgModule({
     imports: [
         BrowserModule,
@@ -22,7 +34,19 @@ import {AuthGuard} from "./auth.guard";
         AppComponent,
         LoginComponent,
         SignupComponent,
-        ResetPasswordComponent
+        ResetPasswordComponent,
+        HomeComponent,
+        ProjectListComponent,
+        ProjectDetailComponent,
+        MessageListComponent,
+        MessageDetailComponent,
+        UserListComponent,
+        UserDetailComponent,
+        DashboardComponent,
+        EventListComponent,
+        EventDetailComponent,
+        ClientListComponent,
+        ClientDetailComponent
     ],
     providers: [
         appRoutingProviders,
