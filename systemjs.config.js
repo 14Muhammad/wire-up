@@ -39,16 +39,12 @@
     }
     // Bundled (~40 requests):
     function packUmd(pkgName) {
-        if (pkgName == "router") {
-            packages['@angular/' + pkgName] = { main: 'index.js', defaultExtension: 'js' };
-        } else {
-            packages['@angular/' + pkgName] = { main: 'bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
-        }
+        packages['@angular/' + pkgName] = { main: 'bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
     }
     // Angular Material 2 Packages to load.
     var _materialPackages = [
-        'core', 'toolbar', 'button', 'card', 'checkbox', 'icon', 'input', 'list', 'progress-bar',
-        'progress-circle', 'radio', 'sidenav', 'grid-list', 'tabs', 'slide-toggle'
+        'core', 'toolbar', 'button', 'button-toggle','card', 'checkbox', 'icon', 'input', 'list', 'progress-bar',
+        'progress-circle', 'radio', 'sidenav', 'grid-list', 'tabs', 'slide-toggle','tooltip','slider','menu'
     ];
     _materialPackages.forEach(function(item) {
         // All Material 2 components are prefixed with  @angular2-material and use

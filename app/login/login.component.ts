@@ -2,18 +2,18 @@ import { Component }   from '@angular/core';
 import { Router }      from '@angular/router';
 import { AuthService } from '../auth.service';
 import {MdButton} from "@angular2-material/button/button";
-import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
+
 import {MdInput} from "@angular2-material/input/input";
 import {MdToolbar} from "@angular2-material/toolbar/toolbar";
 import {FORM_DIRECTIVES, FORM_PROVIDERS} from "@angular/forms";
 import { NgForm }    from '@angular/common';
 import {Login} from "./login";
+import {MdRipple} from "@angular2-material/core";
 
 @Component({
     templateUrl: 'app/login/login.component.html',
     styleUrls: ['app/login/login.component.css'],
-    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar, FORM_DIRECTIVES],
-    providers:[FORM_PROVIDERS]
+    directives: [MdButton,MdRipple,MdToolbar,MdInput]
 })
 export class LoginComponent {
     message: string;

@@ -1,6 +1,8 @@
-import { RouterConfig }          from '@angular/router';
+import {RouterConfig, RouterModule, Routes}          from '@angular/router';
 import {DashboardComponent} from "./dashboard.component";
 
-export const DashboardRoutes: RouterConfig = [
+export const DashboardRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent}
 ];
+
+export const DashboardRouting = RouterModule.forChild(DashboardRoutes);

@@ -1,4 +1,4 @@
-import { RouterConfig }          from '@angular/router';
+import {RouterConfig, Routes, RouterModule}          from '@angular/router';
 import {HomeComponent} from "./home.component";
 import {ProjectRoutes} from "../project/project.routes";
 import {MessageRoutes} from "../message/message.routes";
@@ -10,7 +10,7 @@ import {CrisisCenterRoutes} from "../crisis-center/crisis-center.routes";
 import {AuthGuard} from "../auth.guard";
 import {EventRoutes} from "../event/event.routes";
 
-export const HomeRoutes: RouterConfig = [
+export const HomeRoutes: Routes = [
     {
         path: '',
         redirectTo: '',
@@ -33,3 +33,4 @@ export const HomeRoutes: RouterConfig = [
     }
 
 ];
+export const HomeRouting = RouterModule.forChild(HomeRoutes);
