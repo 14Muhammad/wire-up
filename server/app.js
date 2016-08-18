@@ -6,8 +6,21 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/wireupdb');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, ':: mongoose connection error:'));
+db.once('open', function() {
+    console.log(":: mongoose connected");
+});
+
+
 var projects = require('./routes/projects');
+var members = require('./routes/members');
+var events = require('./routes/events');
 app.use('/wireup/', projects);
+app.use('/wireup/', members);
+app.use('/wireup/', events);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

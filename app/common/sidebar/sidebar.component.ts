@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../auth.service";
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
-import {MD_SIDENAV_DIRECTIVES} from "@angular2-material/sidenav/sidenav";
 import {Ellipses} from "../pipes/ellipses";
 
 @Component({
@@ -69,7 +68,7 @@ export class SidebarComponent {
     },{
         name: 'Team Members',
         icon: 'users',
-        route: "users",
+        route: "members",
         class: 'list-group-item'
     }]
 }

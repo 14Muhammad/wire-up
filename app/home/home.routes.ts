@@ -2,7 +2,7 @@ import {RouterConfig, Routes, RouterModule}          from '@angular/router';
 import {HomeComponent} from "./home.component";
 import {ProjectRoutes} from "../project/project.routes";
 import {MessageRoutes} from "../message/message.routes";
-import {UserRoutes} from "../user/user.routes";
+import {MemberRoutes} from "../member/member.routes";
 import {DashboardRoutes} from "../dashboard/dashboard.routes";
 import {ClientRoutes} from "../client/client.routes";
 import {AuthGuard} from "../auth.guard";
@@ -21,7 +21,7 @@ export const HomeRoutes: Routes = [
         children: [
             ...ProjectRoutes,
             ...MessageRoutes,
-            ...UserRoutes,
+            ...MemberRoutes,
             ...DashboardRoutes,
             ...EventRoutes,
             ...ClientRoutes

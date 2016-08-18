@@ -5,12 +5,7 @@ var mongoose = require('mongoose');
 require('mongoose-double')(mongoose);
 var mPromise = require('mpromise'); // not implemented yet
 var SchemaTypes = mongoose.Schema.Types;
-mongoose.connect('mongodb://localhost:27017/wireupdb');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, ':: mongoose connection error:'));
-db.once('open', function() {
-    console.log(":: mongoose connected");
-});
+
 var Schema = mongoose.Schema;
 var projectSchema = new Schema({
     id : { type: Schema.ObjectId },

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }       from '@angular/router';
 
-import { User, UserService } from './user.service';
+import { Member, MemberService } from './member.service';
 
 @Component({
   template: `
@@ -19,21 +19,21 @@ import { User, UserService } from './user.service';
     </p>
   </div>
   `,
-  providers:[UserService]
+  providers:[MemberService]
 })
-export class UserDetailComponent implements OnInit, OnDestroy  {
-  user: User;
+export class MemberDetailComponent implements OnInit, OnDestroy  {
+  user: Member;
 
   private sub: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: UserService) {}
+    private service: MemberService) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-       let id = +params['id']; // (+) converts string 'id' to a number
+       let id = params['id']; // (+) converts string 'id' to a number
        this.service.getUser(id).then(user => this.user = user);
      });
   }
@@ -46,6 +46,6 @@ export class UserDetailComponent implements OnInit, OnDestroy  {
     let userId = this.user ? this.user.id : null;
     // Pass along the hero id if available
     // so that the HeroList component can select that hero.
-    this.router.navigate(['/users'], { queryParams: { id: `${userId}`, foo: 'foo' } });
+    this.router.navigate(['/members'], { queryParams: { id: `${userId}`, foo: 'foo' } });
   }
 }

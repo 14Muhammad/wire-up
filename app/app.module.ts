@@ -14,10 +14,10 @@ import {HomeComponent} from "./home/home.component";
 import {ProjectListComponent} from "./project/project-list.component";
 import {ProjectDetailComponent} from "./project/project-detail.component";
 import {MessageListComponent} from "./message/message-list.component";
-import {UserListComponent} from "./user/user-list.component";
+import {MemberListComponent} from "./member/member-list.component";
 import {MessageDetailComponent} from "./message/message-detail.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {UserDetailComponent} from "./user/user-detail.component";
+import {MemberDetailComponent} from "./member/member-detail.component";
 import {EventListComponent} from "./event/event-list.component";
 import {EventDetailComponent} from "./event/event-detail.component";
 import {ClientListComponent} from "./client/client-list.component";
@@ -40,8 +40,8 @@ import {ClientDetailComponent} from "./client/client-detail.component";
         ProjectDetailComponent,
         MessageListComponent,
         MessageDetailComponent,
-        UserListComponent,
-        UserDetailComponent,
+        MemberListComponent,
+        MemberDetailComponent,
         DashboardComponent,
         EventListComponent,
         EventDetailComponent,

@@ -96,7 +96,7 @@ export class ProjectListComponent implements OnInit {
             allowDeleting: true,
             allowAdding: true,
             texts:{
-                addRow: 'Add a projectModel'
+                addRow: 'Add project'
             }
         },
         paging: {
