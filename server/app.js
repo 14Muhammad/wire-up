@@ -18,9 +18,13 @@ db.once('open', function() {
 var projects = require('./routes/projects');
 var members = require('./routes/members');
 var events = require('./routes/events');
+var clients = require('./routes/clients');
+var notes = require('./routes/notes');
 app.use('/wireup/', projects);
 app.use('/wireup/', members);
 app.use('/wireup/', events);
+app.use('/wireup/', clients);
+app.use('/wireup/', notes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

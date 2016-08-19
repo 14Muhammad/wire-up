@@ -28,10 +28,8 @@ export class ClientDetailComponent implements OnInit, OnDestroy  {
 
     }
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            let id = +params['id']; // (+) converts string 'id' to a number
-            this.service.getClient(id).then(client => this.client = client);
-        });
+        /*this.service.getClient(id)
+            .subscribe(client => this.client = client);*/
     }
     ngOnDestroy() {
         this.sub.unsubscribe();
