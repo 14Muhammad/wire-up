@@ -22,6 +22,8 @@ import {EventListComponent} from "./event/event-list.component";
 import {EventDetailComponent} from "./event/event-detail.component";
 import {ClientListComponent} from "./client/client-list.component";
 import {ClientDetailComponent} from "./client/client-detail.component";
+import {NoteListComponent} from "./note/note-list.component";
+import {NoteDetailComponent} from "./note/note-detail.component";
 @NgModule({
     imports: [
         BrowserModule,
@@ -46,7 +48,9 @@ import {ClientDetailComponent} from "./client/client-detail.component";
         EventListComponent,
         EventDetailComponent,
         ClientListComponent,
-        ClientDetailComponent
+        ClientDetailComponent,
+        NoteListComponent,
+        NoteDetailComponent
     ],
     providers: [
         appRoutingProviders,

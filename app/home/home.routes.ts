@@ -7,6 +7,7 @@ import {DashboardRoutes} from "../dashboard/dashboard.routes";
 import {ClientRoutes} from "../client/client.routes";
 import {AuthGuard} from "../auth.guard";
 import {EventRoutes} from "../event/event.routes";
+import {NoteRoutes} from "../note/note.routes";
 
 export const HomeRoutes: Routes = [
     {
@@ -19,6 +20,7 @@ export const HomeRoutes: Routes = [
         component: HomeComponent,
         canActivate: [AuthGuard],
         children: [
+            ...NoteRoutes,
             ...ProjectRoutes,
             ...MessageRoutes,
             ...MemberRoutes,
