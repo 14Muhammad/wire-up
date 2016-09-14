@@ -1,24 +1,22 @@
-<div class="container">
-    <div class="col-lg-6 col-lg-offset-3">
-        <form>
-            <md-card>
-                <md-toolbar color="primary">Sign In</md-toolbar><br>
-                <md-card-content>
-                    <md-input placeholder="Email" [(ngModel)]="email" type="email" required
-                              name="email" id="email">
-                    </md-input><br>
-                    <md-input placeholder="Password" [(ngModel)]="password" type="password" required
-                               name="password">
-
-                    </md-input><br><br>
-                </md-card-content>
-                <md-card-actions>
-                    <button  md-raised-button color="primary" (click)="login()"
-                             [disabled]="false" type="submit">Sign In</button>
-                    <button  md-button (click)="goToResetPassword()">Forgot Password?</button>
-                </md-card-actions>
-            </md-card>
-        </form>
-        You don't have an account?<button (click)="goToSignup()" md-button>Sign up</button>
+<div class="login-page">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h1>Wire Up</h1>
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input placeholder="Email" [(ngModel)]="email" type="email" required
+                               class="form-control input-underline input-lg" name="email" id="email"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Password" [(ngModel)]="password" type="password" required
+                               class="form-control input-underline input-lg" name="password"/>
+                    </div>
+                </div>
+                <button class="btn rounded-btn"   (click)="login()" [disabled]="false" type="submit">Sign In</button>
+                <button class="btn rounded-btn"  (click)="goToResetPassword()">Forgot Password?</button>
+            </form>
+            You don't have an account? <a style="cursor: pointer; cursor: hand;" (click)="goToSignup()" >Sign up</a>
+        </div>
     </div>
 </div>

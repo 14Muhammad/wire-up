@@ -1,18 +1,12 @@
 import { Component,OnInit }   from '@angular/core';
 import { Router }   from '@angular/router';
-import {MdButton} from "@angular2-material/button/button";
-import {MD_CARD_DIRECTIVES} from "@angular2-material/card/card";
-import {MdInput} from "@angular2-material/input/input";
-import {MdToolbar} from "@angular2-material/toolbar/toolbar";
-import {MD_RADIO_DIRECTIVES, MdRadioGroup} from "@angular2-material/radio/radio";
 import {CHART_DIRECTIVES} from 'angular2-highcharts';
 import {DxChart, DxToolbar, DxButton, DxPieChart} from "devextreme-angular2/index";
 
 @Component({
     templateUrl: 'app/dashboard/dashboard.component.html',
     styleUrls: [],
-    directives:[MdButton, MD_CARD_DIRECTIVES, MdInput, MdToolbar
-        ,MD_RADIO_DIRECTIVES, MdRadioGroup,CHART_DIRECTIVES,DxChart,DxToolbar,DxButton,DxPieChart],
+    directives:[CHART_DIRECTIVES,DxChart,DxToolbar,DxButton,DxPieChart],
     providers:[]
 })
 export class DashboardComponent implements OnInit {

@@ -1,23 +1,39 @@
-<div class="container">
-    <div class="col-sm-6 col-sm-offset-3">
-        <md-card>
-            <md-toolbar color="primary">Sign up</md-toolbar><br>
-            <md-card-content>
-                <md-input placeholder="First Name" type="text"></md-input><br>
-                <md-input placeholder="Last Name" type="text"></md-input><br>
-                <md-input placeholder="Company Name" type="text"></md-input><br>
-                <md-input placeholder="Email" type="email"></md-input><br>
-                <md-input placeholder="Password" type="password"></md-input><br>
-                <md-input placeholder="Retype Password" type="password"></md-input><br><br>
-                <md-radio-group>
-                    <md-radio-button checked="true" value="male">Male</md-radio-button>
-                    <md-radio-button class="md-primary" value="female">Female</md-radio-button>
-                </md-radio-group>
-            </md-card-content>
-            <md-card-actions>
-                <button  md-raised-button color="primary">Sign up</button>
-            </md-card-actions>
-        </md-card>
-        Already have an account?<button (click)="goToLogin()"  md-button>Login</button>
+<div class="login-page">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <h1>Wire Up</h1>
+            <form role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input placeholder="First Name" class="form-control input-underline input-lg" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Last Name" class="form-control input-underline input-lg" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Company Name" class="form-control input-underline input-lg" type="text"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Email" class="form-control input-underline input-lg" type="email"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Password" class="form-control input-underline input-lg" type="password"/>
+                    </div>
+                    <div class="form-group">
+                        <input placeholder="Retype Password" class="form-control input-underline input-lg" type="password"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="radio-inline">
+                            <label><input type="radio" name="gender"> Male </label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="gender"> Female </label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn rounded-btn" >Sign up</button>
+            </form>
+            Already have an account?<a style="cursor: pointer; cursor: hand;" (click)="goToLogin()">Login</a>
+        </div>
     </div>
 </div>
