@@ -2,38 +2,94 @@
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
             <h1>Wire Up</h1>
-            <form role="form">
+            <form [formGroup]="signUpForm" novalidate (ngSubmit)="onSubmit()">
                 <div class="form-content">
-                    <div class="form-group">
-                        <input placeholder="First Name" class="form-control input-underline input-lg" type="text"/>
-                    </div>
-                    <div class="form-group">
-                        <input placeholder="Last Name" class="form-control input-underline input-lg" type="text"/>
-                    </div>
-                    <div class="form-group">
-                        <input placeholder="Company Name" class="form-control input-underline input-lg" type="text"/>
-                    </div>
-                    <div class="form-group">
-                        <input placeholder="Email" class="form-control input-underline input-lg" type="email"/>
-                    </div>
-                    <div class="form-group">
-                        <input placeholder="Password" class="form-control input-underline input-lg" type="password"/>
-                    </div>
-                    <div class="form-group">
-                        <input placeholder="Retype Password" class="form-control input-underline input-lg" type="password"/>
-                    </div>
-                    <div class="form-group">
-                        <div class="radio-inline">
-                            <label><input type="radio" name="gender"> Male </label>
+                    <div formGroupName="generalInfo">
+                        <div class="form-group">
+                            <input placeholder="First Name"
+                                   formControlName="firstName"
+                                   class="form-control input-underline input-lg"
+                                   type="text"/>
+                            <div [hidden]="signUpForm.find(['generalInfo', 'firstName']).valid ||
+                                             signUpForm.find(['generalInfo', 'firstName']).pristine" class="text-danger">
+                                First Name is Required.
+                            </div>
                         </div>
-                        <div class="radio-inline">
-                            <label><input type="radio" name="gender"> Female </label>
+                        <div class="form-group">
+                            <input placeholder="Last Name"
+                                   formControlName="lastName"
+                                   class="form-control input-underline input-lg"
+                                   type="text"/>
+                            <div [hidden]="signUpForm.find(['generalInfo', 'lastName']).valid ||
+                                             signUpForm.find(['generalInfo', 'lastName']).pristine" class="text-danger">
+                                Last Name is Required.
+                            </div>
+                        </div>
+                    </div>
+                    <div formGroupName="companyInfo">
+                        <div class="form-group">
+                            <input placeholder="Company Name"
+                                   formControlName="companyName"
+                                   class="form-control input-underline input-lg"
+                                   type="text"/>
+                            <div [hidden]="signUpForm.find(['companyInfo', 'companyName']).valid ||
+                                             signUpForm.find(['companyInfo', 'companyName']).pristine" class="text-danger">
+                                Company Name is Required.
+                            </div>
+                        </div>
+                    </div>
+                    <div formGroupName="accountInfo">
+                        <div class="form-group">
+                            <input placeholder="Email"
+                                   formControlName="email"
+                                   class="form-control input-underline input-lg"
+                                   type="email"/>
+                            <div [hidden]="signUpForm.find(['accountInfo', 'email']).valid ||
+                                             signUpForm.find(['accountInfo', 'email']).pristine" class="text-danger">
+                                Please enter a valid email address.
+                            </div>
+                        </div>
+                        <div formGroupName="passwords">
+                            <div class="form-group">
+                                <input placeholder="Password"
+                                       formControlName="password"
+                                       class="form-control input-underline input-lg"
+                                       type="password"/>
+                                <div [hidden]="signUpForm.find(['accountInfo','passwords', 'password']).valid ||
+                                             signUpForm.find(['accountInfo','passwords', 'password']).pristine" class="text-danger">
+                                    Please enter at least 6 characters.
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input placeholder="Retype Password"
+                                       formControlName="confirmPassword"
+                                       class="form-control input-underline input-lg"
+                                       type="password"/>
+                                <div [hidden]="signUpForm.find(['accountInfo','passwords', 'confirmPassword']).pristine ||
+                                                (signUpForm.find(['accountInfo','passwords', 'confirmPassword']).valid &&
+                                                signUpForm.find(['accountInfo','passwords']).valid)"
+                                     class="text-danger">
+                                    Please enter the same value again.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div formGroupName="generalInfo">
+                        <div class="form-group">
+                            <div class="radio-inline" *ngFor="let gender of genders">
+                                <label>
+                                    <input type="radio"
+                                           formControlName="gender"
+                                           [value]="gender">
+                                    {{gender}}
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button class="btn rounded-btn" >Sign up</button>
+                <button type="submit" class="btn rounded-btn" [disabled]="!signUpForm.valid">Sign up</button>
             </form>
-            Already have an account?<a style="cursor: pointer; cursor: hand;" (click)="goToLogin()">Login</a>
+            Already have an account? <a style="cursor: pointer; cursor: hand;" (click)="goToLogin()">Login</a>
         </div>
     </div>
 </div>

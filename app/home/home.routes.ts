@@ -8,6 +8,7 @@ import {ClientRoutes} from "../client/client.routes";
 import {AuthGuard} from "../auth.guard";
 import {EventRoutes} from "../event/event.routes";
 import {NoteRoutes} from "../note/note.routes";
+import {UserRoutes} from "../user/user.routes";
 
 export const HomeRoutes: Routes = [
     {
@@ -26,7 +27,8 @@ export const HomeRoutes: Routes = [
             ...MemberRoutes,
             ...DashboardRoutes,
             ...EventRoutes,
-            ...ClientRoutes
+            ...ClientRoutes,
+            ...UserRoutes
         ]
     }
 

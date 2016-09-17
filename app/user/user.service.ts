@@ -1,0 +1,49 @@
+import {Injectable} from "@angular/core";
+import {Http, Headers} from "@angular/http";
+import {Observable} from "rxjs/Rx";
+import {User} from "./user";
+import {GlobalConstants} from '../common/constants/globals';
+
+@Injectable()
+export class UserService {
+    private baseApiUrl = GlobalConstants.BASE_API_URL;
+    constructor(private http: Http) {}
+
+    public getUsers() : Observable<User[]>{
+        let usersPath = this.baseApiUrl + 'users';
+        let users = this.http.get(usersPath, {headers: this.getHeaders()})
+            .map(res => <User[]> res.json())
+            .catch(this.handleError);
+        return users;
+    }
+
+    public addUser(newUser) {
+        var addUserPath = this.baseApiUrl + 'user/add';
+        return this.http.post(addUserPath, newUser,{headers: this.getHeaders()})
+            .catch(this.handleError);
+    }
+
+    public updateUser(id, updatedUser) {
+        var addUserPath = this.baseApiUrl + 'user/update/'+id;
+        return this.http.put(addUserPath, updatedUser,{headers: this.getHeaders()})
+            .catch(this.handleError);
+    }
+
+    public deleteUser(id) {
+        var deleteUserPath = this.baseApiUrl + 'user/delete/'+id;
+        return this.http.delete(deleteUserPath,{headers: this.getHeaders()})
+            .catch(this.handleError);
+    }
+
+    private getHeaders(){
+        let headers = new Headers();
+        headers.append('Accept', 'application/json');
+        return headers;
+    }
+    private handleError (error: any) {
+        let errorMsg = error.message || ` Problem in Projects retrieving`
+        console.error(errorMsg);
+        return Observable.throw(errorMsg);
+    }
+
+}

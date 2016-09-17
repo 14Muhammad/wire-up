@@ -1,4 +1,4 @@
-import {RouterConfig, RouterModule, Routes}          from '@angular/router';
+import {RouterModule, Routes}          from '@angular/router';
 import {MemberListComponent} from "./member-list.component";
 import {MemberDetailComponent} from "./member-detail.component";
 

@@ -75,5 +75,10 @@ export class SidebarComponent {
             icon: 'users',
             route: "members",
             class: 'list-group-item'
+        },{
+            name: 'Users',
+            icon: 'user',
+            route: "users",
+            class: 'list-group-item'
         }]
 }

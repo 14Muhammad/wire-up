@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router'
 import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routes';
@@ -24,12 +24,16 @@ import {ClientListComponent} from "./client/client-list.component";
 import {ClientDetailComponent} from "./client/client-detail.component";
 import {NoteListComponent} from "./note/note-list.component";
 import {NoteDetailComponent} from "./note/note-detail.component";
+import {UserListComponent} from "./user/user-list.component";
+import {UserDetailComponent} from "./user/user-detail.component";
+import {UserService} from "./user/user.service";
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         RouterModule,
         HttpModule,
+        ReactiveFormsModule,
         routing
     ],
     declarations: [
@@ -50,12 +54,15 @@ import {NoteDetailComponent} from "./note/note-detail.component";
         ClientListComponent,
         ClientDetailComponent,
         NoteListComponent,
-        NoteDetailComponent
+        NoteDetailComponent,
+        UserListComponent,
+        UserDetailComponent
     ],
     providers: [
         appRoutingProviders,
         AuthService,
-        AuthGuard
+        AuthGuard,
+        UserService
     ],
     entryComponents:[
 
