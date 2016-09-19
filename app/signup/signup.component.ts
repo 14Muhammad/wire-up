@@ -125,7 +125,6 @@ export class SignupComponent {
         // this.form.reset({first: 'Nancy', last: 'Drew'});   -- will reset to value specified
     }
     onSubmit() {
-        var flag : boolean;
         console.info(this.signUpForm);
         this.userService.addUser({
             firstName: this.signUpForm.value.generalInfo.firstName,
@@ -134,7 +133,19 @@ export class SignupComponent {
             companyName:this.signUpForm.value.companyInfo.companyName,
             email:this.signUpForm.value.accountInfo.email,
             password:this.signUpForm.value.accountInfo.passwords.password,
-        }).subscribe(flag => flag = flag);;
+        })
+            .subscribe(response => {
+                /**
+                 * @param response              Information about the object.
+                 * @param response.isSignedUp   Information about the object's members.
+                 */
+                if(response.isSignedUp){
+                    this.authService.login().subscribe(() => {
+                        if (this.authService.isLoggedIn)
+                            this.router.navigate(['/dashboard']);
+                    });
+                }
+            });
     }
     goToLogin(){
         this.router.navigate(['/login']);}

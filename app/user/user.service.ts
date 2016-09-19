@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http, Headers, Response} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {User} from "./user";
 import {GlobalConstants} from '../common/constants/globals';
@@ -20,6 +20,7 @@ export class UserService {
     public addUser(newUser) {
         var addUserPath = this.baseApiUrl + 'user/add';
         return this.http.post(addUserPath, newUser,{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
             .catch(this.handleError);
     }
 

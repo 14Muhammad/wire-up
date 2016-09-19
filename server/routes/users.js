@@ -49,6 +49,7 @@ router.post('/user/add', function (req, res) {
     newUser.save(function(err) {
         if (err) throw err;
         console.log('New User created!');
+        res.json({ isSignedUp: true });
     });
 })
 
