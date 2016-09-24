@@ -40,7 +40,7 @@ export class SignupComponent {
                 'email':['',[
                     Validators.required,
                     Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-                ]],
+                ],this.asyncEmailValidator(this.userService)],
                 'passwords': formBuilder.group({
                     'password': ['', [
                         Validators.required,
@@ -54,19 +54,17 @@ export class SignupComponent {
             'companyInfo': formBuilder.group({
                 'companyName': ['', Validators.required]
             }),
-
-
-
         });
-        /*this.signUpForm.statusChanges.subscribe(
+        this.signUpForm.statusChanges.subscribe(
             (data: any) => console.info("Form Status => " + data)
         );
-        this.signUpForm.valueChanges.subscribe(
-            (data: any) => {
+        this.signUpForm.valueChanges
+            .debounceTime(600)
+            .subscribe((data: any) => {
                 console.log("valueChanges")
                 console.info(data)
             }
-        );*/
+        );
     }
     areEqual(group: ControlGroup) {
         let val;
@@ -106,24 +104,31 @@ export class SignupComponent {
         }
     }
 
-    asyncExampleValidator(control: FormControl): Promise<any> | Observable<any> {
-        const promise = new Promise<any>(
-            (resolve, reject) => {
-                setTimeout(() => {
-                    if (control.value === 'Example') {
-                        resolve({'invalid': true});
-                    } else {
-                        resolve(null);
-                    }
-                }, 1500);
-            }
-        );
-        return promise;
+    asyncEmailValidator (userService : UserService) {
+        return (control: FormControl): Promise<any> | Observable<any> => {
+            let promise = new Promise<any>(
+                (resolve, reject) => {
+                    userService.isEmailExists(control.value)
+                        .subscribe(response => {
+                            /**
+                             * @param response              Information about the object.
+                             * @param response.isEmailExists   Information about the object's members.
+                             */
+                            if(response.isEmailExists)
+                                resolve({'isEmailExists': true});
+                            else
+                                resolve(null);
+                        });
+                });
+            return promise;
+        }
     }
+
     reset() {
         this.signUpForm.reset();  // will reset to null
         // this.form.reset({first: 'Nancy', last: 'Drew'});   -- will reset to value specified
     }
+
     onSubmit() {
         console.info(this.signUpForm);
         this.userService.addUser({
@@ -147,20 +152,8 @@ export class SignupComponent {
                 }
             });
     }
+
     goToLogin(){
-        this.router.navigate(['/login']);}
-
-/*    signup() {
-        this.message = 'Trying to sign up ...';
-
-        this.authService.signup().subscribe(() => {
-           // this.setMessage();
-            if (this.authService.isLoggedIn) {
-                console.log("==> " + this.authService.isLoggedIn);
-
-                this.router.navigate(['/crisis-center/admin']);
-            }
-        });
-    }*/
-
+        this.router.navigate(['/login']);
+    }
 }

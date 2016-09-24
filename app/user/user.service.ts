@@ -36,6 +36,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    public isEmailExists(email){
+        var isEmailExistsPath = this.baseApiUrl + 'user/isExists';
+        return this.http.post(isEmailExistsPath,{email:email},{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
+            .catch(this.handleError);
+    }
+
     private getHeaders(){
         let headers = new Headers();
         headers.append('Accept', 'application/json');

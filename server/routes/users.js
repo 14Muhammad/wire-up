@@ -69,4 +69,19 @@ router.delete('/user/delete/:id', function(req, res) {
     });
 });
 
+router.post('/user/isExists', function (req, res) {
+    userModel.findOne({'email': req.body.email}, function(err, users) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }else {
+            console.log(":: users " + users);
+            if(users === null)
+                res.send({ isEmailExists: false });
+            else
+                res.send({ isEmailExists: true });
+        }
+    });
+})
+
 module.exports = router;
