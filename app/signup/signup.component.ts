@@ -61,10 +61,10 @@ export class SignupComponent {
         this.signUpForm.valueChanges
             .debounceTime(600)
             .subscribe((data: any) => {
-                console.log("valueChanges")
-                console.info(data)
-            }
-        );
+                    console.log("valueChanges")
+                    console.info(data)
+                }
+            );
     }
     areEqual(group: ControlGroup) {
         let val;
@@ -131,24 +131,22 @@ export class SignupComponent {
 
     onSubmit() {
         console.info(this.signUpForm);
-        this.userService.addUser({
+        var userForm : any = {
             firstName: this.signUpForm.value.generalInfo.firstName,
             lastName:this.signUpForm.value.generalInfo.lastName,
             gender:this.signUpForm.value.generalInfo.gender,
             companyName:this.signUpForm.value.companyInfo.companyName,
             email:this.signUpForm.value.accountInfo.email,
             password:this.signUpForm.value.accountInfo.passwords.password,
-        })
+        }
+        this.userService.addUser(userForm)
             .subscribe(response => {
                 /**
                  * @param response              Information about the object.
                  * @param response.isSignedUp   Information about the object's members.
                  */
                 if(response.isSignedUp){
-                    this.authService.login().subscribe(() => {
-                        if (this.authService.isLoggedIn)
-                            this.router.navigate(['/dashboard']);
-                    });
+                    this.authService.login(userForm);
                 }
             });
     }

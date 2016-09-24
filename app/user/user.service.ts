@@ -43,13 +43,20 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    public login(user:User){
+        var loginPath = this.baseApiUrl + 'user/login';
+        return this.http.post(loginPath,{email:user.email,password:user.password},{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
+            .catch(this.handleError);
+    }
+
     private getHeaders(){
         let headers = new Headers();
         headers.append('Accept', 'application/json');
         return headers;
     }
     private handleError (error: any) {
-        let errorMsg = error.message || ` Problem in Projects retrieving`
+        let errorMsg = error.message || ` Problem in retrieving`
         console.error(errorMsg);
         return Observable.throw(errorMsg);
     }

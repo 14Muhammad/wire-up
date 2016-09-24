@@ -84,4 +84,19 @@ router.post('/user/isExists', function (req, res) {
     });
 })
 
+router.post('/user/login', function (req, res) {
+    userModel.findOne({'email': req.body.email,'password': req.body.password}, function(err, users) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }else {
+            console.log(":: users " + users);
+            if(users === null)
+                res.send({ isLoggedIn: false });
+            else
+                res.send({ isLoggedIn: true });
+        }
+    });
+})
+
 module.exports = router;
