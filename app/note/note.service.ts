@@ -17,26 +17,26 @@ export class NoteService {
     constructor(private http: Http) {}
 
     public getNotes() : Observable<Note[]>{
-        let notesPath = this.baseApiUrl + 'wireup/notes';
+        let notesPath = this.baseApiUrl + 'notes';
         let heroes = this.http.get(notesPath, {headers: this.getHeaders()})
             .map(res => <Note[]> res.json())
             .catch(this.handleError);
         return heroes;
     }
     public addNote(newNote) {
-        var addNotePath = this.baseApiUrl + 'wireup/note/add';
+        var addNotePath = this.baseApiUrl + 'note/add';
         return this.http.post(addNotePath, newNote,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public updateNote(id, updatedNote) {
-        var addNotePath = this.baseApiUrl + 'wireup/note/update/'+id;
+        var addNotePath = this.baseApiUrl + 'note/update/'+id;
         return this.http.put(addNotePath, updatedNote,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public deleteNote(id) {
-        var deleteNotePath = this.baseApiUrl + 'wireup/note/delete/'+id;
+        var deleteNotePath = this.baseApiUrl + 'note/delete/'+id;
         return this.http.delete(deleteNotePath,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
