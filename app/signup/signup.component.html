@@ -10,8 +10,8 @@
                                    formControlName="firstName"
                                    class="form-control input-underline input-lg"
                                    type="text"/>
-                            <div [hidden]="signUpForm.find(['generalInfo', 'firstName']).valid ||
-                                             signUpForm.find(['generalInfo', 'firstName']).pristine" class="text-danger">
+                            <div [hidden]="signUpForm.controls['generalInfo'].controls['firstName'].valid ||
+                                             signUpForm.controls['generalInfo'].controls['firstName'].pristine" class="text-danger">
                                 First Name is Required.
                             </div>
                         </div>
@@ -20,8 +20,8 @@
                                    formControlName="lastName"
                                    class="form-control input-underline input-lg"
                                    type="text"/>
-                            <div [hidden]="signUpForm.find(['generalInfo', 'lastName']).valid ||
-                                             signUpForm.find(['generalInfo', 'lastName']).pristine" class="text-danger">
+                            <div [hidden]="signUpForm.controls['generalInfo'].controls['lastName'].valid ||
+                                             signUpForm.controls['generalInfo'].controls['lastName'].pristine" class="text-danger">
                                 Last Name is Required.
                             </div>
                         </div>
@@ -32,8 +32,8 @@
                                    formControlName="companyName"
                                    class="form-control input-underline input-lg"
                                    type="text"/>
-                            <div [hidden]="signUpForm.find(['companyInfo', 'companyName']).valid ||
-                                             signUpForm.find(['companyInfo', 'companyName']).pristine" class="text-danger">
+                            <div [hidden]="signUpForm.controls['companyInfo'].controls['companyName'].valid ||
+                                             signUpForm.controls['companyInfo'].controls['companyName'].pristine" class="text-danger">
                                 Company Name is Required.
                             </div>
                         </div>
@@ -44,8 +44,8 @@
                                    formControlName="email"
                                    class="form-control input-underline input-lg"
                                    type="email"/>
-                            <div [hidden]="signUpForm.find(['accountInfo', 'email']).valid ||
-                                             signUpForm.find(['accountInfo', 'email']).pristine" class="text-danger">
+                            <div [hidden]="signUpForm.controls['accountInfo'].controls['email'].valid ||
+                                             signUpForm.controls['accountInfo'].controls['email'].pristine" class="text-danger">
                                 Please enter a valid email address.
                             </div>
                         </div>
@@ -55,8 +55,9 @@
                                        formControlName="password"
                                        class="form-control input-underline input-lg"
                                        type="password"/>
-                                <div [hidden]="signUpForm.find(['accountInfo','passwords', 'password']).valid ||
-                                             signUpForm.find(['accountInfo','passwords', 'password']).pristine" class="text-danger">
+                                <div [hidden]="signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].valid ||
+                                             signUpForm.controls['accountInfo'].controls['passwords'].controls['password'].pristine"
+                                     class="text-danger">
                                     Please enter at least 6 characters.
                                 </div>
                             </div>
@@ -65,9 +66,9 @@
                                        formControlName="confirmPassword"
                                        class="form-control input-underline input-lg"
                                        type="password"/>
-                                <div [hidden]="signUpForm.find(['accountInfo','passwords', 'confirmPassword']).pristine ||
-                                                (signUpForm.find(['accountInfo','passwords', 'confirmPassword']).valid &&
-                                                signUpForm.find(['accountInfo','passwords']).valid)"
+                                <div [hidden]="signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].pristine ||
+                                                (signUpForm.controls['accountInfo'].controls['passwords'].controls['confirmPassword'].valid &&
+                                                signUpForm.controls['accountInfo'].controls['passwords'].valid)"
                                      class="text-danger">
                                     Please enter the same value again.
                                 </div>

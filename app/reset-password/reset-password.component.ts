@@ -1,6 +1,7 @@
 import { Component }   from '@angular/core';
 import { Router }   from '@angular/router';
 import { AuthService } from '../auth.service';
+import {FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -11,7 +12,13 @@ export class ResetPasswordComponent {
     constructor(public authService: AuthService, public router: Router){
 
     }
+
+    resetPasswordForm: FormGroup;
     goToLogin(){
         this.router.navigate(['/login']);
+    }
+
+    resetPassword(){
+
     }
 }
