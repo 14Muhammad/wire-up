@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
+import {GlobalConstants} from '../common/constants/globals';
 export class Project {
     constructor(public id: string,
                 public name: string,
@@ -23,29 +24,30 @@ let PROJECTS = [
 let projectsPromise = Promise.resolve(PROJECTS);
 @Injectable()
 export class ProjectService {
+    private baseApiUrl = GlobalConstants.BASE_API_URL;
     constructor(private http: Http) {}
 
     public getProjects() : Observable<Project[]>{
-        let projectsPath = 'http://127.0.0.1:8081/wireup/projects';
+        let projectsPath = this.baseApiUrl + 'projects';
         let heroes = this.http.get(projectsPath, {headers: this.getHeaders()})
             .map(res => <Project[]> res.json())
             .catch(this.handleError);
         return heroes;
     }
     public addProject(newProject) {
-        var addProjectPath = 'http://127.0.0.1:8081/wireup/project/add';
+        var addProjectPath = this.baseApiUrl + 'project/add';
         return this.http.post(addProjectPath, newProject,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public updateProject(id, updatedProject) {
-        var addProjectPath = 'http://127.0.0.1:8081/wireup/project/update/'+id;
+        var addProjectPath = this.baseApiUrl + 'project/update/'+id;
         return this.http.put(addProjectPath, updatedProject,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public deleteProject(id) {
-        var deleteProjectPath = 'http://127.0.0.1:8081/wireup/project/delete/'+id;
+        var deleteProjectPath = this.baseApiUrl + 'project/delete/'+id;
         return this.http.delete(deleteProjectPath,{headers: this.getHeaders()})
             .catch(this.handleError);
     }

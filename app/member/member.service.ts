@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
+import {GlobalConstants} from '../common/constants/globals';
 
 export class Member {
   constructor(
@@ -27,10 +28,11 @@ let usersPromise = Promise.resolve(USERS);
 
 @Injectable()
 export class MemberService {
+  private baseApiUrl = GlobalConstants.BASE_API_URL;
   constructor(private http: Http) {}
 
   public getMembers() : Observable<Member[]>{
-    let membersPath = 'http://127.0.0.1:8081/wireup/members';
+    let membersPath = this.baseApiUrl + 'members';
     let members = this.http.get(membersPath, {headers: this.getHeaders()})
         .map(res => <Member[]> res.json())
         .catch(this.handleError);
@@ -38,19 +40,19 @@ export class MemberService {
   }
 
   public addMember(newMember) {
-    var addMemberPath = 'http://127.0.0.1:8081/wireup/member/add';
+    var addMemberPath = this.baseApiUrl + 'member/add';
     return this.http.post(addMemberPath, newMember,{headers: this.getHeaders()})
         .catch(this.handleError);
   }
 
   public updateMember(id, updatedMember) {
-    var addMemberPath = 'http://127.0.0.1:8081/wireup/member/update/'+id;
+    var addMemberPath = this.baseApiUrl + 'member/update/'+id;
     return this.http.put(addMemberPath, updatedMember,{headers: this.getHeaders()})
         .catch(this.handleError);
   }
 
   public deleteMember(id) {
-    var deleteMemberPath = 'http://127.0.0.1:8081/wireup/member/delete/'+id;
+    var deleteMemberPath = this.baseApiUrl + 'member/delete/'+id;
     return this.http.delete(deleteMemberPath,{headers: this.getHeaders()})
         .catch(this.handleError);
   }

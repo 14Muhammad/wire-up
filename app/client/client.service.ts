@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs/Rx";
 import {Headers, Http} from "@angular/http";
+import {GlobalConstants} from '../common/constants/globals';
 export class Client {
     constructor(
         public id : string,
@@ -22,9 +23,10 @@ export class Client {
 }
 @Injectable()
 export class ClientService {
+    private baseApiUrl = GlobalConstants.BASE_API_URL;
     constructor(private http: Http) {}
     public getClients() : Observable<Client[]> {
-        let clientsPath = 'http://127.0.0.1:8081/wireup/clients';
+        let clientsPath = this.baseApiUrl + 'clients';
         let heroes = this.http.get(clientsPath, {headers: this.getHeaders()})
             .map(res => <Client[]> res.json())
             .catch(this.handleError);
@@ -32,19 +34,19 @@ export class ClientService {
     }
 
     public addClient(newClient) {
-        var addClientPath = 'http://127.0.0.1:8081/wireup/client/add';
+        var addClientPath = this.baseApiUrl + 'client/add';
         return this.http.post(addClientPath, newClient,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public updateClient(id, updatedClient) {
-        var addClientPath = 'http://127.0.0.1:8081/wireup/client/update/'+id;
+        var addClientPath = this.baseApiUrl + 'client/update/'+id;
         return this.http.put(addClientPath, updatedClient,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public deleteClient(id) {
-        var deleteClientPath = 'http://127.0.0.1:8081/wireup/client/delete/'+id;
+        var deleteClientPath = this.baseApiUrl + 'client/delete/'+id;
         return this.http.delete(deleteClientPath,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
@@ -54,7 +56,7 @@ export class ClientService {
         return headers;
     }
     private handleError (error: any) {
-        let errorMsg = error.message || ` Problem in Projects retrieving`
+        let errorMsg = error.message || ` Problem in Clients retrieving`
         console.error(errorMsg);
         return Observable.throw(errorMsg);
     }

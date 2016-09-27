@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
+import {GlobalConstants} from "../common/constants/globals";
 export class Note {
     constructor(public id: string,
                 public name: string,
@@ -12,29 +13,30 @@ export class Note {
 
 @Injectable()
 export class NoteService {
+    private baseApiUrl = GlobalConstants.BASE_API_URL;
     constructor(private http: Http) {}
 
     public getNotes() : Observable<Note[]>{
-        let notesPath = 'http://127.0.0.1:8081/wireup/notes';
+        let notesPath = this.baseApiUrl + 'wireup/notes';
         let heroes = this.http.get(notesPath, {headers: this.getHeaders()})
             .map(res => <Note[]> res.json())
             .catch(this.handleError);
         return heroes;
     }
     public addNote(newNote) {
-        var addNotePath = 'http://127.0.0.1:8081/wireup/note/add';
+        var addNotePath = this.baseApiUrl + 'wireup/note/add';
         return this.http.post(addNotePath, newNote,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public updateNote(id, updatedNote) {
-        var addNotePath = 'http://127.0.0.1:8081/wireup/note/update/'+id;
+        var addNotePath = this.baseApiUrl + 'wireup/note/update/'+id;
         return this.http.put(addNotePath, updatedNote,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
 
     public deleteNote(id) {
-        var deleteNotePath = 'http://127.0.0.1:8081/wireup/note/delete/'+id;
+        var deleteNotePath = this.baseApiUrl + 'wireup/note/delete/'+id;
         return this.http.delete(deleteNotePath,{headers: this.getHeaders()})
             .catch(this.handleError);
     }
