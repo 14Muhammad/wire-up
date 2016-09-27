@@ -1,4 +1,4 @@
-import {RouterConfig, Routes, RouterModule}          from '@angular/router';
+import { Routes, RouterModule}          from '@angular/router';
 import {HomeComponent} from "./home.component";
 import {ProjectRoutes} from "../project/project.routes";
 import {MessageRoutes} from "../message/message.routes";
@@ -14,12 +14,13 @@ export const HomeRoutes: Routes = [
     {
         path: '',
         redirectTo: '',
-        terminal: true
+        pathMatch: 'full'
     },
     {
         path: '',
         component: HomeComponent,
         canActivate: [AuthGuard],
+        pathMatch: 'prefix',
         children: [
             ...NoteRoutes,
             ...ProjectRoutes,

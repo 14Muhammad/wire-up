@@ -1,14 +1,12 @@
 import {Component} from '@angular/core';
 import {AuthService} from "../../auth.service";
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import {Ellipses} from "../pipes/ellipses";
 
 @Component({
     selector: 'sidebar-component',
     templateUrl: 'app/common/sidebar/sidebar.component.html',
-    styleUrls:['app/common/sidebar/sidebar.component.css'],
-    directives: [ROUTER_DIRECTIVES],
-    pipes: [Ellipses]
+    styleUrls:['app/common/sidebar/sidebar.component.css']
 })
 
 export class SidebarComponent {

@@ -5,11 +5,9 @@ import {
     FormGroup,
     FormControl,
     FormBuilder,
-    REACTIVE_FORM_DIRECTIVES,
     Validators,
-    Validator
+    FormArray
 } from "@angular/forms";
-import {ControlGroup} from "@angular/common";
 import { Observable } from "rxjs/Rx";
 import {UserService} from "../user/user.service";
 
@@ -66,7 +64,7 @@ export class SignupComponent {
                 }
             );
     }
-    areEqual(group: ControlGroup) {
+    areEqual(group: FormArray) {
         let val;
         let valid = true;
         for (let name in group.controls) {
@@ -92,7 +90,7 @@ export class SignupComponent {
         return null;
     }
     matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
-        return (group: ControlGroup): {[key: string]: any} => {
+        return (group: FormArray): {[key: string]: any} => {
             let password = group.controls[passwordKey];
             let confirmPassword = group.controls[confirmPasswordKey];
 

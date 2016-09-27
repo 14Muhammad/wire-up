@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { Member, MemberService }   from './member.service';
 import {AuthService} from "../auth.service";
 
 @Component({
   templateUrl : 'app/member/member-list.component.html',
-  directives: [ROUTER_DIRECTIVES],
   providers:[MemberService]
 })
 export class MemberListComponent implements OnInit, OnDestroy {

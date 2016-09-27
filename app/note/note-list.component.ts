@@ -1,12 +1,10 @@
 import {Component, OnInit, ViewChild}   from '@angular/core';
 import { Router }              from '@angular/router';
-import {DxDataGrid, DxButton, DxToolbar} from "devextreme-angular2";
 import {NoteService, Note} from "./note.service";
 @Component({
     templateUrl:'app/note/note-list.component.html',
     styleUrls:['app/note/note-list.component.css'],
-    providers: [NoteService],
-    directives: [DxDataGrid,DxButton,DxToolbar]
+    providers: [NoteService]
 })
 export class NoteListComponent implements OnInit {
     notes: Note[];
@@ -159,9 +157,9 @@ export class NoteListComponent implements OnInit {
 
 
 
-    @ViewChild(DxDataGrid) dataGrid:DxDataGrid
+    //@ViewChild(DxDataGrid) dataGrid:DxDataGrid
     refresh() {
-        this.dataGrid.instance.refresh();
+        //this.dataGrid.instance.refresh();
     }
     ngOnInit() {
         this.service.getNotes()

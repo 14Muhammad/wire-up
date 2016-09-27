@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 import {AuthService} from "../auth.service";
@@ -8,7 +8,6 @@ import {User} from "./user";
 
 @Component({
     templateUrl : 'app/user/user-list.component.html',
-    directives: [ROUTER_DIRECTIVES],
     providers:[UserService]
 })
 export class UserListComponent implements OnInit, OnDestroy {

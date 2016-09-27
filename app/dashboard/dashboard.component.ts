@@ -1,12 +1,9 @@
 import { Component,OnInit }   from '@angular/core';
 import { Router }   from '@angular/router';
-import {CHART_DIRECTIVES} from 'angular2-highcharts';
-import {DxChart, DxToolbar, DxButton, DxPieChart} from "devextreme-angular2/index";
 
 @Component({
     templateUrl: 'app/dashboard/dashboard.component.html',
     styleUrls: [],
-    directives:[CHART_DIRECTIVES,DxChart,DxToolbar,DxButton,DxPieChart],
     providers:[]
 })
 export class DashboardComponent implements OnInit {

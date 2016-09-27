@@ -27,6 +27,11 @@ import {NoteDetailComponent} from "./note/note-detail.component";
 import {UserListComponent} from "./user/user-list.component";
 import {UserDetailComponent} from "./user/user-detail.component";
 import {UserService} from "./user/user.service";
+import {HeaderComponent} from "./common/header/header.component";
+import {SidebarComponent} from "./common/sidebar/sidebar.component";
+import {DevExtremeModule} from "devextreme-angular2";
+import {Ellipses} from "./common/pipes/ellipses";
+import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 @NgModule({
     imports: [
         BrowserModule,
@@ -34,6 +39,8 @@ import {UserService} from "./user/user.service";
         RouterModule,
         HttpModule,
         ReactiveFormsModule,
+        DevExtremeModule,
+        Ng2BootstrapModule,
         routing
     ],
     declarations: [
@@ -56,7 +63,10 @@ import {UserService} from "./user/user.service";
         NoteListComponent,
         NoteDetailComponent,
         UserListComponent,
-        UserDetailComponent
+        UserDetailComponent,
+        HeaderComponent,
+        SidebarComponent,
+        Ellipses
     ],
     providers: [
         appRoutingProviders,
