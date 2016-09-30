@@ -46,7 +46,15 @@
                                    type="email"/>
                             <div [hidden]="signUpForm.controls['accountInfo'].controls['email'].valid ||
                                              signUpForm.controls['accountInfo'].controls['email'].pristine" class="text-danger">
-                                Please enter a valid email address.
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['email'].hasError('required')">
+                                    Email is required.
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['email'].hasError('pattern')">
+                                    Please enter a valid email address.
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['email'].hasError('isEmailExists')">
+                                    Email is already taken.
+                                </p>
                             </div>
                         </div>
                         <div formGroupName="passwords">

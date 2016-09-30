@@ -1,7 +1,7 @@
 import { Component }   from '@angular/core';
 import { Router }   from '@angular/router';
 import { AuthService } from '../auth.service';
-import {FormGroup} from "@angular/forms";
+import {FormGroup, Validators, FormBuilder} from "@angular/forms";
 
 
 @Component({
@@ -9,11 +9,31 @@ import {FormGroup} from "@angular/forms";
     styleUrls: ['app/reset-password/reset-password.component.css']
 })
 export class ResetPasswordComponent {
-    constructor(public authService: AuthService, public router: Router){
+
+    resetPasswordForm: FormGroup;
+
+    constructor(public authService: AuthService,
+                private formBuilder:FormBuilder,
+                public router: Router){
 
     }
 
-    resetPasswordForm: FormGroup;
+    ngOnInit():any {
+        this.resetPasswordForm = this.formBuilder.group({
+            email: ['', [Validators.required,
+                Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+            ]]
+        });
+        this.resetPasswordForm.valueChanges
+            .subscribe((data: any) => {
+                    console.log("valueChanges")
+                    console.info(data)
+                    console.info(this.resetPasswordForm)
+                }
+            );
+    }
+
+
     goToLogin(){
         this.router.navigate(['/login']);
     }

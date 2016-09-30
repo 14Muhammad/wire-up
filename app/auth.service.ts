@@ -19,21 +19,7 @@ export class AuthService {
     }
 
     login(user: User) {
-        this.userService.login(user)
-            .subscribe(response => {
-                /**
-                 * @param response              Information about the object.
-                 * @param response.isLoggedIn   Information about the object's members.
-                 */
-                if(response.isLoggedIn){
-                    this.isLoggedIn = true
-                    localStorage.setItem('loggedUser', JSON.stringify(user));
-                    this.router.navigate(['/dashboard']);
-                }
-                else{
-                    this.router.navigate(['/login']);
-                }
-            });
+        return this.userService.login(user);
     }
 
     logout() {

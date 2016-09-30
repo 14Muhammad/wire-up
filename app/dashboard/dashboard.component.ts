@@ -7,6 +7,16 @@ import { Router }   from '@angular/router';
     providers:[]
 })
 export class DashboardComponent implements OnInit {
+
+    public t: any;
+    public i: number;
+    public time = (new Date()).getTime();
+    public data: any[] = [];
+    public isStarted: boolean = false;
+    
+    constructor(public router: Router) {
+
+    }
     ngOnInit():any {
         for (this.i = -6; this.i <= 0; this.i += 1) {
             this.data.push({
@@ -16,14 +26,6 @@ export class DashboardComponent implements OnInit {
                 temperature: Math.random()
             })
         }
-    }
-    public t: any;
-    public i: number;
-    public time = (new Date()).getTime();
-    public data: any[] = [];
-    public isStarted: boolean = false;
-    constructor(public router: Router) {
-
     }
     toolbar = {
         dataSource: [

@@ -61,6 +61,8 @@ export class SignupComponent {
             .subscribe((data: any) => {
                     console.log("valueChanges")
                     console.info(data)
+                console.log("signUpForm")
+                console.info(this.signUpForm)
                 }
             );
     }

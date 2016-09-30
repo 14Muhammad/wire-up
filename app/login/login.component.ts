@@ -1,7 +1,6 @@
 import {Component, OnInit}   from '@angular/core';
 import { Router }      from '@angular/router';
 import { AuthService } from '../auth.service';
-import {Login} from "./login";
 import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 
 @Component({
@@ -26,20 +25,28 @@ export class LoginComponent implements OnInit{
             .subscribe((data: any) => {
                     console.log("valueChanges")
                     console.info(data)
+                    console.info(this.loginForm)
                 }
             );
     }
 
     login() {
         this.authService.login(this.loginForm.value)
-            /*.subscribe(() => {
-                if (this.authService.isLoggedIn) {
-                    console.log("[isLoggedIn] ===>  " + this.authService.isLoggedIn);
-                    // Todo: capture where the user was going and nav there.
-                    // Meanwhile redirect the user to the crisis admin
+            .subscribe(response => {
+                /**
+                 * @param response              Information about the object.
+                 * @param response.isLoggedIn   Information about the object's members.
+                 */
+                if(response.isLoggedIn){
+                    this.authService.isLoggedIn = true;
+                    localStorage.setItem('loggedUser', JSON.stringify(this.loginForm.value));
                     this.router.navigate(['/dashboard']);
                 }
-            });*/
+                else{
+                    this.addAlert();
+                    this.router.navigate(['/login']);
+                }
+            });
     }
 
     logout() {
@@ -51,6 +58,19 @@ export class LoginComponent implements OnInit{
     }
     goToSignup(){
         this.router.navigate(['/signup']);
+    }
+
+    public alerts:Array<Object> = [
+
+    ];
+
+    public closeAlert(i:number):void {
+        this.alerts.splice(i, 1);
+    }
+
+    public addAlert():void {
+        if(this.alerts.length == 0)
+            this.alerts.push({msg: 'Authentication failed!', type: 'warning', closable: true, dismissOnTimeout: 3000});
     }
 
 
