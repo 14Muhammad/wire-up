@@ -99,4 +99,26 @@ router.post('/user/login', function (req, res) {
     });
 })
 
+router.post('/user/updatePassword', function (req, res) {
+    userModel.update({
+            'email': req.body.email
+        },{
+            $set:{
+                password: req.body.password
+            }
+        },
+        function(err, response) {
+            if (err) {
+                console.log(err);
+                return res.status(500).json(err);
+            }else {
+                console.log(":: updatePassword " + response);
+                if(response === null)
+                    res.send({ isPasswordUpdated: false });
+                else
+                    res.send({ isPasswordUpdated: true });
+            }
+        });
+})
+
 module.exports = router;

@@ -7,7 +7,7 @@
                    [dismissOnTimeout]="alert.dismissOnTimeout"
                    dismissible="true"
                    (close)="closeAlert(i)">
-                {{ alert?.msg }}
+                <i [class]="alert.msgIcon"></i> {{ alert?.msg }}
             </alert>
             <form [formGroup]="loginForm" novalidate (ngSubmit)="login()">
                 <div class="form-content">

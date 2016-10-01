@@ -50,6 +50,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    public updatePassword(user:User){
+        var updatePasswordPath = this.baseApiUrl + 'user/updatePassword';
+        return this.http.post(updatePasswordPath,{email:user.email,password:user.password},{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
+            .catch(this.handleError);
+    }
+
     private getHeaders(){
         let headers = new Headers();
         headers.append('Accept', 'application/json');

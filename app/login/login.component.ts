@@ -70,7 +70,13 @@ export class LoginComponent implements OnInit{
 
     public addAlert():void {
         if(this.alerts.length == 0)
-            this.alerts.push({msg: 'Authentication failed!', type: 'warning', closable: true, dismissOnTimeout: 3000});
+            this.alerts.push({
+                msg: 'Authentication failed!',
+                type: 'warning',
+                closable: true,
+                msgIcon: 'fa fa-warning',
+                dismissOnTimeout: 3000
+            });
     }
 
 
