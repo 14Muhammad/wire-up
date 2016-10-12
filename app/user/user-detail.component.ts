@@ -4,24 +4,32 @@ import {UserService} from "./user.service";
 import {User} from "./user";
 
 @Component({
-    template: `
-  <h2>Users</h2>
-  `,
+    templateUrl:'app/user/user-detail.component.html',
     providers:[UserService]
 })
 export class UserDetailComponent implements OnInit, OnDestroy  {
-    ngOnInit(): void {
-    }
-
-    ngOnDestroy(): void {
-    }
     user: User;
-
+    userName:string;
     private sub: any;
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: UserService) {}
+        private service: UserService) {
+
+    }
+
+    ngOnInit(): void {
+        this.sub = this.route.params.subscribe(params => {
+            this.userName = params['id']; // (+) converts string 'id' to a number
+            //this.service.getMessage(id).then(message => this.message = message);
+        });
+    }
+
+    ngOnDestroy(): void {
+    }
+
+
+
 
 }

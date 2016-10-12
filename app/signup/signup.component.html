@@ -1,4 +1,8 @@
 <div class="login-page">
+    <dx-toast   [message]="toast.msg"
+                [type]="toast.type"
+                [displayTime]="toast.time"
+                [(visible)]="toast.visible"></dx-toast>
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
             <h1>Wire Up</h1>
@@ -54,6 +58,30 @@
                                 </p>
                                 <p *ngIf="signUpForm.controls['accountInfo'].controls['email'].hasError('isEmailExists')">
                                     Email is already taken.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Username"
+                                   formControlName="userName"
+                                   class="form-control input-underline input-lg"
+                                   type="text"/>
+                            <div [hidden]="signUpForm.controls['accountInfo'].controls['userName'].valid ||
+                                             signUpForm.controls['accountInfo'].controls['userName'].pristine" class="text-danger">
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['userName'].hasError('required')">
+                                    Username is required.
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['userName'].hasError('minlength')">
+                                    Too short, min 3 characters
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['userName'].hasError('maxlength')">
+                                    Too long, max 15 characters
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['userName'].hasError('pattern')">
+                                    Please enter a valid username.
+                                </p>
+                                <p *ngIf="signUpForm.controls['accountInfo'].controls['userName'].hasError('isUsernameExists')">
+                                    Username is already taken.
                                 </p>
                             </div>
                         </div>

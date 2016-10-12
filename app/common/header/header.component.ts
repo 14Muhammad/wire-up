@@ -9,15 +9,23 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
-    ngOnInit(): void {
-       this.loggedUser =  JSON.parse(localStorage.getItem('loggedUser')).email;
-    }
+    loggedUserName:string;
+    loggedUser:string;
     constructor(public authService: AuthService, private router: Router){
 
     }
-    loggedUser:string;
+    ngOnInit(): void {
+        this.loggedUser =  JSON.parse(localStorage.getItem('loggedUser')).email;
+        this.loggedUserName = localStorage.getItem('loggedUserName')
+    }
+
     logout() {
         this.authService.logout();
         this.router.navigate(['/login']);
     }
+
+    goToProfile(){
+        this.router.navigate(['/user', this.loggedUserName]);
+    }
+
 }

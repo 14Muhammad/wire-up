@@ -24,6 +24,16 @@ export class SignupComponent {
         'male',
         'female'
     ];
+    toast = {
+        msg : "Successfully Registered!",
+        type: "success",
+        time: 1000,
+        visible: false
+    };
+    toastPlay(){
+        this.toast.visible = this.toast.visible ? false : true;
+    }
+
     constructor(public authService: AuthService,
                 public userService: UserService,
                 public router: Router,
@@ -39,6 +49,12 @@ export class SignupComponent {
                     Validators.required,
                     Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
                 ],this.asyncEmailValidator(this.userService)],
+                'userName':['',[
+                    Validators.required,
+                    Validators.minLength(3),
+                    Validators.maxLength(15),
+                    Validators.pattern("^[a-zA-Z0-9]+$")
+                ],this.asyncUsernameValidator(this.userService)],
                 'passwords': formBuilder.group({
                     'password': ['', [
                         Validators.required,
@@ -61,8 +77,8 @@ export class SignupComponent {
             .subscribe((data: any) => {
                     console.log("valueChanges")
                     console.info(data)
-                console.log("signUpForm")
-                console.info(this.signUpForm)
+                    console.log("signUpForm")
+                    console.info(this.signUpForm)
                 }
             );
     }
@@ -124,6 +140,26 @@ export class SignupComponent {
         }
     }
 
+    asyncUsernameValidator(userService : UserService){
+        return (control: FormControl): Promise<any> | Observable<any> => {
+            let promise = new Promise<any>(
+                (resolve, reject) => {
+                    userService.isUsernameExists(control.value)
+                        .subscribe(response => {
+                            /**
+                             * @param response              Information about the object.
+                             * @param response.isUsernameExists   Information about the object's members.
+                             */
+                            if(response.isUsernameExists)
+                                resolve({'isUsernameExists': true});
+                            else
+                                resolve(null);
+                        });
+                });
+            return promise;
+        }
+    }
+
     reset() {
         this.signUpForm.reset();  // will reset to null
         // this.form.reset({first: 'Nancy', last: 'Drew'});   -- will reset to value specified
@@ -137,6 +173,7 @@ export class SignupComponent {
             gender:this.signUpForm.value.generalInfo.gender,
             companyName:this.signUpForm.value.companyInfo.companyName,
             email:this.signUpForm.value.accountInfo.email,
+            userName:this.signUpForm.value.accountInfo.userName,
             password:this.signUpForm.value.accountInfo.passwords.password,
         }
         this.userService.addUser(userForm)
@@ -146,7 +183,11 @@ export class SignupComponent {
                  * @param response.isSignedUp   Information about the object's members.
                  */
                 if(response.isSignedUp){
-                    this.authService.login(userForm);
+                    this.toastPlay();
+                    Observable.interval(1000)
+                        .subscribe(data => {
+                            this.router.navigate(['/login']);
+                        })
                 }
             });
     }

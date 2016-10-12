@@ -12,6 +12,7 @@ var userSchema = new Schema({
     lastName:{ type: String, required: false },
     companyName:{ type: String, required: false },
     email: { type: String, required: false },
+    userName: { type: String, required: false },
     password: { type: String, required: false },
     gender:{ type: String, required: false },
     phone:{ type: String, required: false},
@@ -75,11 +76,26 @@ router.post('/user/isExists', function (req, res) {
             console.log(err);
             return res.status(500).json(err);
         }else {
-            console.log(":: users " + users);
+            console.log(":: isExists " + users);
             if(users === null)
                 res.send({ isEmailExists: false });
             else
                 res.send({ isEmailExists: true });
+        }
+    });
+})
+
+router.post('/user/isUsernameExists', function (req, res) {
+    userModel.findOne({'userName': req.body.userName}, function(err, users) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }else {
+            console.log(":: isUsernameExists " + users);
+            if(users === null)
+                res.send({ isUsernameExists: false });
+            else
+                res.send({ isUsernameExists: true });
         }
     });
 })
@@ -93,8 +109,10 @@ router.post('/user/login', function (req, res) {
             console.log(":: users " + users);
             if(users === null)
                 res.send({ isLoggedIn: false });
-            else
-                res.send({ isLoggedIn: true });
+            else {
+                var userData = users._doc;
+                res.send({isLoggedIn: true, userName : userData.userName});
+            }
         }
     });
 })

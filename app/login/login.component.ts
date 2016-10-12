@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit{
                 if(response.isLoggedIn){
                     this.authService.isLoggedIn = true;
                     localStorage.setItem('loggedUser', JSON.stringify(this.loginForm.value));
+                    localStorage.setItem('loggedUserName', response.userName);
                     this.router.navigate(['/dashboard']);
                 }
                 else{

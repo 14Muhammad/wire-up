@@ -43,6 +43,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    public isUsernameExists(userName){
+        var isUsernameExistsPath = this.baseApiUrl + 'user/isUsernameExists';
+        return this.http.post(isUsernameExistsPath,{userName:userName},{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
+            .catch(this.handleError);
+    }
+
     public login(user:User){
         var loginPath = this.baseApiUrl + 'user/login';
         return this.http.post(loginPath,{email:user.email,password:user.password},{headers: this.getHeaders()})
