@@ -15,13 +15,8 @@ import {Observable} from "rxjs/Rx";
 @Component({
     templateUrl:'app/user/user-detail.component.html',
     providers:[UserService],
-    styles:[`
-            :focus {outline:none;}
-            ::-moz-focus-inner {border:0;}
-        `],
-    animations: [
-
-        ]
+    styleUrls:['app/user/user-detail.component.css'],
+    animations: []
 })
 export class UserDetailComponent implements OnInit, OnDestroy  {
     user: User;

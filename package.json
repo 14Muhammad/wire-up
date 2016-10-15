@@ -28,6 +28,7 @@
     "@angular/upgrade": "2.0.0",
     "angular2-highcharts": "0.3.2",
     "angular2-in-memory-web-api": "0.0.20",
+    "animate.css": "^3.5.2",
     "body-parser": "^1.15.2",
     "bootstrap": "4.0.0-alpha.4",
     "cookie-parser": "^1.4.3",

@@ -1,52 +1,53 @@
-<md-card>
-    <md-card-header>
-        <img md-card-avatar src="../img/user.png">
-        <md-card-title> {{user?.firstName | uppercase}} {{user?.lastName | uppercase}} </md-card-title>
-        <md-card-subtitle> <span class="label label-primary"> {{user?.role }} Admin </span> </md-card-subtitle>
-    </md-card-header>
-    <md-card-content>
-        <md-grid-list cols="4" [style.background]="'white'" rowHeight="80px">
-            <md-grid-tile>
-                <h1>{{projects}}</h1>
-                <span> {{'Open Projects' | uppercase}} </span>
-            </md-grid-tile>
-            <md-grid-tile>
-                <h1>6</h1>
-                <span> {{'Projects Completed' | uppercase}} </span>
-            </md-grid-tile>
-            <md-grid-tile>
-                <h1>{{hours}}</h1>
-                <span> {{'Total Hours Worked' | uppercase}} </span>
-            </md-grid-tile>
-            <md-grid-tile>
-                <h1>35</h1>
-                <span> {{'Total Project Hours' | uppercase}} </span>
-            </md-grid-tile>
-        </md-grid-list>
-    </md-card-content>
-    <md-card-actions>
-        <button md-raised-button md-mini-fab>
-            <a [routerLink]="['/user/'+userName]">
-                <i class="fa fa-facebook fa-fw"></i>
-            </a>
-        </button>
-        <button md-raised-button md-mini-fab>
-            <a [routerLink]="['/user/'+userName]">
-                <i class="fa fa-twitter fa-fw"></i>
-            </a>
-        </button>
-        <button md-raised-button md-mini-fab>
-            <a [routerLink]="['/user/'+userName]">
-                <i class="fa fa-github fa-fw"></i>
-            </a>
-        </button>
-        <button md-raised-button md-mini-fab>
-            <a [routerLink]="['/user/'+userName]">
-                <i class="fa fa-linkedin fa-fw"></i>
-            </a>
-        </button>
-    </md-card-actions>
-</md-card>
+<div class="animated slideInRight">
+    <md-card>
+        <md-card-header>
+            <img md-card-avatar src="../img/user.png">
+            <md-card-title> {{user?.firstName | uppercase}} {{user?.lastName | uppercase}} </md-card-title>
+            <md-card-subtitle> <span class="label label-primary"> {{user?.role }} Admin </span> </md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+            <md-grid-list cols="4" [style.background]="'white'" rowHeight="80px">
+                <md-grid-tile>
+                    <h1>{{projects}}</h1>
+                    <span> {{'Open Projects' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>6</h1>
+                    <span> {{'Projects Completed' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>{{hours}}</h1>
+                    <span> {{'Total Hours Worked' | uppercase}} </span>
+                </md-grid-tile>
+                <md-grid-tile>
+                    <h1>35</h1>
+                    <span> {{'Total Project Hours' | uppercase}} </span>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-facebook fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-twitter fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-github fa-fw"></i>
+                </a>
+            </button>
+            <button md-raised-button md-mini-fab>
+                <a [routerLink]="['/user/'+userName]">
+                    <i class="fa fa-linkedin fa-fw"></i>
+                </a>
+            </button>
+        </md-card-actions>
+    </md-card>
 
 <br>
 <md-tab-group>
