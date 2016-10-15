@@ -4,7 +4,7 @@
         'app':                        'js',
         '@angular':                   'node_modules/@angular',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-        '@angular2-material':         'node_modules/@angular2-material',
+        '@angular/material':          'node_modules/@angular/material',
         'ng2-bootstrap':              'node_modules/ng2-bootstrap',
         'rxjs':                       'node_modules/rxjs',
         'moment':                     'node_modules/moment/moment.js',
@@ -19,7 +19,8 @@
         'ng2-bootstrap':              { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
         'angular2-highcharts' :       { main: 'index',format: 'cjs', defaultExtension: 'js' },
-        'devextreme-angular2':        { main: 'index.js', defaultExtension: 'js' }
+        'devextreme-angular2':        { main: 'index.js', defaultExtension: 'js' },
+        '@angular/material':          { format: 'cjs', main: 'material.umd.js' }
     };
     var ngPackageNames = [
         'common',

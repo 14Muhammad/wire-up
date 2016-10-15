@@ -54,6 +54,17 @@ router.post('/user/add', function (req, res) {
     });
 })
 
+router.get('/user/:id', function (req, res) {
+    userModel.findOne({'userName': req.params.id}, function(err, user) {
+        if (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+        console.log(":: user " + user);
+        res.send(user._doc);
+    });
+})
+
 router.put('/user/update/:id', function(req, res, next) {
     console.log(":: user/update ");
     userModel.findByIdAndUpdate(req.params.id, req.body, function(err, user) {

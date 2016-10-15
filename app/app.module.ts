@@ -32,6 +32,7 @@ import {SidebarComponent} from "./common/sidebar/sidebar.component";
 import {DevExtremeModule} from "devextreme-angular2";
 import {Ellipses} from "./common/pipes/ellipses";
 import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
+import {MaterialModule} from '@angular/material';
 @NgModule({
     imports: [
         BrowserModule,
@@ -41,6 +42,7 @@ import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
         ReactiveFormsModule,
         DevExtremeModule,
         Ng2BootstrapModule,
+        MaterialModule.forRoot(),
         routing
     ],
     declarations: [

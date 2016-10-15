@@ -17,6 +17,13 @@ export class UserService {
         return users;
     }
 
+    public getUser(id) {
+        var getUserPath = this.baseApiUrl + 'user/'+id;
+        return this.http.get(getUserPath,{headers: this.getHeaders()})
+            .map(res => <User> res.json())
+            .catch(this.handleError);
+    }
+
     public addUser(newUser) {
         var addUserPath = this.baseApiUrl + 'user/add';
         return this.http.post(addUserPath, newUser,{headers: this.getHeaders()})

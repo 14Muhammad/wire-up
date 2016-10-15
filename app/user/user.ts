@@ -12,6 +12,8 @@ export class User {
         public salaryTerm:string,
         public hireDate:string,
         public role:string,
+        public mobileNumber:string,
+        public skypeId:string,
         public createdAt:string,
         public updatedAt:string) { }
 }
