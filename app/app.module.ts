@@ -4,7 +4,7 @@ import { AppComponent }  from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router'
 import { HttpModule } from '@angular/http';
-import { routing, appRoutingProviders } from './app.routes';
+import { routing } from './app.routes';
 import {LoginComponent} from "./login/login.component";
 import {AuthService} from "./auth.service";
 import {SignupComponent} from "./signup/signup.component";
@@ -33,6 +33,7 @@ import {DevExtremeModule} from "devextreme-angular2";
 import {Ellipses} from "./common/pipes/ellipses";
 import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 import {MaterialModule} from '@angular/material';
+import {ToDoModule} from "./todo/todo.module";
 @NgModule({
     imports: [
         BrowserModule,
@@ -43,7 +44,8 @@ import {MaterialModule} from '@angular/material';
         DevExtremeModule,
         Ng2BootstrapModule,
         MaterialModule.forRoot(),
-        routing
+        routing,
+        ToDoModule
     ],
     declarations: [
         AppComponent,
@@ -71,7 +73,6 @@ import {MaterialModule} from '@angular/material';
         Ellipses
     ],
     providers: [
-        appRoutingProviders,
         AuthService,
         AuthGuard,
         UserService

@@ -1,0 +1,53 @@
+#app .custom-bgcolor-light,
+#app .header-container .notice,
+#app .header-dropdown-menu a:hover,
+#app .button.is-selected,
+#app .protip,
+.no-touch .todo-item:hover:not(.is-editing),
+.no-touch .todo-item:hover:not(.is-editing) .todo-text,
+.no-touch .todo-item:hover:not(.is-editing) .todo-text-header {
+    background-color: #f5fdf0
+}
+
+#app .custom-color,
+#app .close-button,
+#app .nav-right-button,
+#app .nav-left-button,
+#app .todo-button,
+#app .delete-account-button,
+#app .toggle-button-checkbox,
+#app #calendar .present,
+#app #calendar .present .todo-item:not(.is-done) .todo-text-html > a,
+#app .todo-text-html > a:hover,
+#app .protip-example,
+#app .underline,
+#app .dot-item-label-point,
+.no-touch #lists a:hover,
+.header-container .notice strong {
+    color: #5bbb19 !important;
+}
+
+#app .nav-right-button:hover,
+#app .nav-left-button:hover,
+#app .todo-button:hover,
+#app .delete-account-button:hover,
+#app .underline:hover {
+    color: #000 !important;
+}
+
+#app .custom-bgcolor,
+#app .dot-item-button:hover .dot-item-fill,
+#app .dot-item-label,
+#app .primary-button,
+#app .ui-datepicker-header,
+#app .ui-datepicker-today {
+    background-color: #5bbb19 !important;
+}
+
+#app .primary-button:hover {
+    background-color: #000 !important;
+}
+
+#app .modal-window h2 {
+    border-top-color: #5bbb19 !important;
+}
