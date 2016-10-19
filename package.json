@@ -39,7 +39,7 @@
     "font-awesome": "^4.6.3",
     "highcharts": "^4.2.7",
     "jquery": "^2.2.3",
-    "moment": "2.13.0",
+    "moment": "2.15.1",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.8",
     "mongoose-double": "0.0.1",
