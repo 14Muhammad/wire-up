@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 
 import {ToDoComponent} from "./todo.component";
-import {ToDoRouting} from "./todo.routes";
+import {ToDoRouting} from "./todo.routing";
 @NgModule({
     declarations:[
         ToDoComponent

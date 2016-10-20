@@ -1,8 +1,10 @@
 import {Component, OnInit} from "@angular/core";
 import * as moment from 'moment';
 import {ToDo} from "./todo";
-import {TimePhase} from "./time-phase";
+import {TimePhase} from "../common/enums/time-phase";
 import {Observable} from "rxjs/Rx";
+import {WUWindow} from "../common/interfaces/wu-window.interface";
+
 @Component({
     moduleId: module.id,
     templateUrl:'todo.component.html',
@@ -17,6 +19,10 @@ export class ToDoComponent implements OnInit{
     nowDate = moment().day();
     toDoList: ToDo[] = [];
     newToDo:string;
+    wuWindow: WUWindow = <WUWindow>window;
+    speechSynthesis = this.wuWindow.speechSynthesis || {};
+    SpeechSynthesisUtterance = this.wuWindow.SpeechSynthesisUtterance || {};
+
     constructor() {
 
     }
@@ -59,6 +65,10 @@ export class ToDoComponent implements OnInit{
                     text: text,
                     isDone:false
                 })
+                if(this.speechSynthesis) {
+                    var utterThis = new this.SpeechSynthesisUtterance(text);
+                    this.speechSynthesis.speak(utterThis);
+                }
             });
     }
 

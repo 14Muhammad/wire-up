@@ -1,10 +1,10 @@
-import { NgModule }      from '@angular/core';
+import {NgModule, CUSTOM_ELEMENTS_SCHEMA}      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router'
 import { HttpModule } from '@angular/http';
-import { routing } from './app.routes';
+import { routing } from './app.routing';
 import {LoginComponent} from "./login/login.component";
 import {AuthService} from "./auth.service";
 import {SignupComponent} from "./signup/signup.component";
@@ -33,7 +33,8 @@ import {DevExtremeModule} from "devextreme-angular2";
 import {Ellipses} from "./common/pipes/ellipses";
 import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 import {MaterialModule} from '@angular/material';
-import {ToDoModule} from "./todo/todo.module";
+import {WUModalModule} from "./common/blocks/modal/modal.module";
+import {WUModalService} from "./common/blocks/modal/modal.service";
 @NgModule({
     imports: [
         BrowserModule,
@@ -45,7 +46,7 @@ import {ToDoModule} from "./todo/todo.module";
         Ng2BootstrapModule,
         MaterialModule.forRoot(),
         routing,
-        ToDoModule
+        WUModalModule
     ],
     declarations: [
         AppComponent,
@@ -75,7 +76,11 @@ import {ToDoModule} from "./todo/todo.module";
     providers: [
         AuthService,
         AuthGuard,
-        UserService
+        UserService,
+        WUModalService
+    ],
+    schemas:[
+        CUSTOM_ELEMENTS_SCHEMA
     ],
     entryComponents:[
 

@@ -1,8 +1,8 @@
+import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 import {Component, OnInit}   from '@angular/core';
 import { Router }      from '@angular/router';
-import { AuthService } from '../auth.service';
-import {Validators, FormGroup, FormBuilder} from "@angular/forms";
 
+import { AuthService } from '../auth.service';
 @Component({
     templateUrl: 'app/login/login.component.html',
     styleUrls: ['app/login/login.component.css']
