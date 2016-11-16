@@ -78,10 +78,10 @@ export class SidebarComponent {
             icon: 'user',
             route: "users",
             class: 'list-group-item'
-        },{
+        }/*,{
             name: 'Todos',
             icon: 'list-alt',
             route: "todos",
             class: 'list-group-item'
-        }]
+        }*/]
 }
