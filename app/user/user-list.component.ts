@@ -170,10 +170,10 @@ export class UserListComponent implements OnInit, OnDestroy {
         //this.service.getUsers()
     }
 
-    isSelected(user: User) { return user.id == this.selectedId; }
+    isSelected(user: User) { return user._id == this.selectedId; }
 
     onSelect(user: User) {
-        this.router.navigate(['/user', user.id]);
+        this.router.navigate(['/user', user._id]);
     }
 
 }

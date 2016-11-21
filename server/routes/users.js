@@ -16,11 +16,17 @@ var userSchema = new Schema({
     password: { type: String, required: false },
     gender:{ type: String, required: false },
     phone:{ type: String, required: false},
+    altPhone:{ type: String, required: false},
     jobTitle:{ type: String, required: false },
     salary:{ type: String, required: false },
     salaryTerm:{ type: String, required: false },
     hireDate:{ type: Date, required: false, default: new Date()},
     role:{ type: String, required: false},
+    mailingAddress:{ type: String, required: false},
+    altMailingAddress:{ type: String, required: false},
+    skypeId:{ type: String, required: false},
+    dob:{ type: String, required: false},
+    ssn:{ type: String, required: false},
     createdAt:{ type: Date, required: false, default: new Date()},
     updatedAt:{ type: Date, required: false, default: new Date()}
 });
@@ -70,6 +76,7 @@ router.put('/user/update/:id', function(req, res, next) {
     userModel.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
         if (err) throw err;
         console.log('User updated!');
+        res.send({ isUserUpdated: true });
     });
 });
 

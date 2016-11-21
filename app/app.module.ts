@@ -31,8 +31,8 @@ import {HeaderComponent} from "./common/header/header.component";
 import {SidebarComponent} from "./common/sidebar/sidebar.component";
 import {DevExtremeModule} from "devextreme-angular2";
 import {Ellipses} from "./common/pipes/ellipses";
-import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
-import {MaterialModule} from '@angular/material';
+import {Ng2BootstrapModule, DatepickerModule} from "ng2-bootstrap/ng2-bootstrap";
+import {MaterialModule, MdSnackBar} from '@angular/material';
 import {WUModalModule} from "./common/blocks/modal/modal.module";
 import {WUModalService} from "./common/blocks/modal/modal.service";
 @NgModule({
@@ -46,7 +46,8 @@ import {WUModalService} from "./common/blocks/modal/modal.service";
         Ng2BootstrapModule,
         MaterialModule.forRoot(),
         routing,
-        WUModalModule
+        WUModalModule,
+        DatepickerModule
     ],
     declarations: [
         AppComponent,
@@ -77,7 +78,8 @@ import {WUModalService} from "./common/blocks/modal/modal.service";
         AuthService,
         AuthGuard,
         UserService,
-        WUModalService
+        WUModalService,
+        MdSnackBar
     ],
     schemas:[
         CUSTOM_ELEMENTS_SCHEMA

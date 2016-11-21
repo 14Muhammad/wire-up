@@ -1,10 +1,15 @@
 export class User {
     constructor(
-        public id : string,
+        public _id : string,
         public firstName: string,
         public lastName: string,
         public email: string,
         public userName: string,
+        public mailingAddress:string,
+        public altMailingAddress:string,
+        public phone:string,
+        public altPhone:string,
+        public ssn:string,
         public companyName:string,
         public gender:string,
         public password:string,
@@ -14,6 +19,7 @@ export class User {
         public role:string,
         public mobileNumber:string,
         public skypeId:string,
+        public dob:string,
         public createdAt:string,
         public updatedAt:string) { }
 }

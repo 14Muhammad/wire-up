@@ -34,6 +34,7 @@ export class UserService {
     public updateUser(id, updatedUser) {
         var addUserPath = this.baseApiUrl + 'user/update/'+id;
         return this.http.put(addUserPath, updatedUser,{headers: this.getHeaders()})
+            .map((res:Response) => res.json())
             .catch(this.handleError);
     }
 
