@@ -53,6 +53,13 @@ export class UserDetailComponent implements OnInit, OnDestroy  {
                     this.userForm.controls['skypeId'].setValue(this.user.skypeId);
                     this.userForm.controls['dob'].setValue(this.user.dob);
                     this.userForm.controls['ssn'].setValue(this.user.ssn);
+
+                    this.userForm.controls['facebook'].setValue(this.user.facebook);
+                    this.userForm.controls['twitter'].setValue(this.user.twitter);
+                    this.userForm.controls['linkedin'].setValue(this.user.linkedin);
+                    this.userForm.controls['youtube'].setValue(this.user.youtube);
+                    this.userForm.controls['github'].setValue(this.user.github);
+
                 });
         });
 
@@ -66,6 +73,12 @@ export class UserDetailComponent implements OnInit, OnDestroy  {
             skypeId: ['', []],
             dob: [null, []],
             ssn: [null, []],
+            facebook: [null, []],
+            linkedin: [null, []],
+            twitter: [null, []],
+            github: [null, []],
+            youtube: [null, []]
+
         });
 
         Observable.interval(100)
@@ -91,7 +104,13 @@ export class UserDetailComponent implements OnInit, OnDestroy  {
             skypeId : this.userForm.controls['skypeId'].value,
             dob : this.userForm.controls['dob'].value,
             ssn : this.userForm.controls['ssn'].value,
-    }
+            facebook : this.userForm.controls['facebook'].value,
+            twitter : this.userForm.controls['twitter'].value,
+            linkedin : this.userForm.controls['linkedin'].value,
+            github : this.userForm.controls['github'].value,
+            youtube : this.userForm.controls['youtube'].value
+
+        }
         //this.snackBar.open('It didn\'t quite work!', 'Try Again');
         this.service.updateUser(this.user._id,updateUserData)
             .subscribe(response => {

@@ -20,6 +20,11 @@ export class User {
         public mobileNumber:string,
         public skypeId:string,
         public dob:string,
+        public facebook: string,
+        public linkedin: string,
+        public twitter: string,
+        public github: string,
+        public youtube: string,
         public createdAt:string,
         public updatedAt:string) { }
 }

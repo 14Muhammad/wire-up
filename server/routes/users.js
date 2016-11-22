@@ -27,6 +27,13 @@ var userSchema = new Schema({
     skypeId:{ type: String, required: false},
     dob:{ type: String, required: false},
     ssn:{ type: String, required: false},
+
+    facebook:{ type: String, required: false},
+    twitter:{ type: String, required: false},
+    youtube:{ type: String, required: false},
+    github:{ type: String, required: false},
+    linkedin:{ type: String, required: false},
+
     createdAt:{ type: Date, required: false, default: new Date()},
     updatedAt:{ type: Date, required: false, default: new Date()}
 });

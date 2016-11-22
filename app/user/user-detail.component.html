@@ -52,7 +52,10 @@
     <br>
     <form [formGroup]="userForm" novalidate autocomplete="off" (ngSubmit)="updateUser()">
         <md-tab-group>
-            <md-tab label="General Info">
+            <md-tab>
+                <template md-tab-label>
+                    <i class='fa fa-info fa-lg fa-fw'></i>General Info
+                </template>
                 <br><br>
                 <table width="99%" cellspacing="0"><tr>
                     <td><md-input placeholder="First Name" formControlName="firstName"></md-input></td>
@@ -73,10 +76,13 @@
                 <template md-tab-label>
                     <i class="fa fa-link fa-lg fa-fw"></i> Social Links
                 </template>
-                <template md-tab-content>
-                    <p>Some more tab content</p>
-                    <p>...</p>
-                </template>
+                <br><br>
+                <md-input placeholder="Facebook" formControlName="facebook"></md-input><br>
+                <md-input placeholder="Linkedin" formControlName="linkedin"></md-input><br>
+                <md-input placeholder="Twitter" formControlName="twitter"></md-input><br>
+                <md-input placeholder="Github" formControlName="github"></md-input><br>
+                <md-input placeholder="Youtube" formControlName="youtube"></md-input><br>
+                <button md-raised-button color="primary" type="submit" (click)="updateUser()">Save</button>
             </md-tab>
             <md-tab>
                 <template md-tab-label>
